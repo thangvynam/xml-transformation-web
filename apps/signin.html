@@ -47,22 +47,63 @@ h4 {
 }
 
 </style>
+<body>
 <div class="container">
-    <div class="row">
-        <div class="col-md-offset-5 col-md-3">
-            <div class="form-login">
-            <h4>Welcome back.</h4>
-            <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
-            </br>
-            <input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
-            </br>
-            <div class="wrapper">
-            <span class="group-btn">     
-                <a href="#" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></a>
-            </span>
+        <div class="row">
+            <div class="col-md-offset-5 col-md-3">
+                <div class="form-login">
+                    <h4>Welcome back.</h4>
+                    
+                    <input name="username" type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
+                    </br>
+                    <input name="password" type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
+                    </br>
+                    <div class="wrapper">
+                            <span class="group-btn">     
+                                <button id="button" class="btn btn-primary btn-md" type="submit ">login <i class="fa fa-sign-in"></i></button>
+                            </span>
+                    </div>
+                    
+                    
+                </div>
+            
             </div>
-            </div>
-        
         </div>
-    </div>
-</div>
+    </div>        
+    <script>
+        $(document).ready(function() {
+            $( "#button" ).click(function(e) {
+            var username = $("#userName").val()
+            var password = $("#userPassword").val()
+            var Dia_chi_Dich_vu="http://localhost:3001/login" // gửi qua DAL xử lý 
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", Dia_chi_Dich_vu, false);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send(username+"&"+password);
+            console.log(xhttp.responseText)
+            if(xhttp.responseText==="102"){
+                
+            }
+            
+    })
+    
+});
+    //var Dia_chi_Dich_vu="http://localhost:3000/login" // gửi qua DAL xử lý 
+    // //   var Tham_so="Ma_so_Xu_ly=TaiKhoan"
+    // //   var Dia_chi_Xu_ly=`${Dia_chi_Dich_vu}?${Tham_so}`
+    // var xhttp = new XMLHttpRequest();
+    // xhttp.onreadystatechange = function() {
+    //     if (this.readyState == 4 && this.status == 200) {
+    //         caches=this.responseText    
+    //         return this.responseText
+        
+    //     }
+    // }
+    // xhttp.open("POST", Dia_chi_Dich_vu, false);
+    // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // xhttp.send(name+"&"+password);
+    //     });
+    </script>
+</body>
+
+    
