@@ -4,9 +4,9 @@ var app = require('http')
 var url = require('url')
 var query = require('querystring')
 var port = 3000
-
+var path = __dirname 
 var tokenKey = []
-
+var user = {};
 function checkAuth(headers){
     var uid = headers.uid
     console.log(uid)
@@ -56,11 +56,33 @@ app.createServer((req, res) => {
                     }).on('end', () => {
                         body = Buffer.concat(body).toString()
                         resultString= resultString.split("&")
+                        
                         if(resultString[0]==="admin" && resultString[1]==="123"){
                             tokenKey.push("101")
                             res.writeHeader(200, {'Content-Type': 'text/plain'})
                             res.end('101')
-                        } 
+                        }else{
+                            var check = false;
+                            fs.readdirSync(path + '/user/').forEach(file => {
+                                var filePath = path + '/user/' + file
+                                data = fs.readFileSync(filePath, 'utf-8')
+                               
+                                if(JSON.parse(data).username===resultString[0] &&  resultString[1] === JSON.parse(data).password){
+                                
+                                    check=true;
+                                    tokenKey.push("102")
+                                    res.writeHeader(200, {'Content-Type': 'text/plain'})
+                                    res.end('102')
+                                }
+                            })
+                            if(!check){
+                                res.end('103')
+                            }
+                            // var builder = new xml2js.Builder()
+                            // var xml = builder.buildObject(danhSach_DienThoai)
+                            // return xml
+                        }
+
                     })
                     break
                 case '/CuaHang':                   

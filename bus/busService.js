@@ -7,6 +7,7 @@ var port = 3001
 var session = []
 
 app.createServer((req, res) => {
+    check="false"
     switch(req.method) {
         case 'GET':
             switch(req.url){
@@ -26,20 +27,45 @@ app.createServer((req, res) => {
                     res.end("Request was not support!!!")
                     break
             }
+            res.end("..")
             break
 
         case 'POST':
-            switch(req.url){
-                case '/DanhSachDienThoai':
-                    
+                    let body = [];
+                    var resultString =""
+                    result=""
                     res.setHeader("Access-Control-Allow-Origin", '*')
-                   
-                    res.end(BUS.getDanhSachDT())
-                    break
-            }
-            break
+                    req.on('data', (chunk) => {
+                        body.push(chunk)
+                        resultString+=chunk
+                        
+                    }).on('end', () => {
+                        
+                        switch(req.url){
+                
+                            case '/DanhSachDienThoai':
+                                //res.setHeader("Access-Control-Allow-Origin", '*')
+                                //res.end(BUS.getDanhSachDT())
+                                result= BUS.getDanhSachDT()
+                                break
+                            case '/login':
+                                
+                                body = Buffer.concat(body).toString()
+                                resultString=resultString.split("&")
+                                var username = resultString[0]
+                                var password = resultString[1]
+                            
+                                BUS.postUserName(username,password) // đi qua 3000 / login
+                                result=BUS.getCaches()
+                            
+                                break;
+                            }
+                            console.log(result)
+                            res.end(result)
+                    })
         }
-    res.end("")
+        
+    
 }).listen(port, (err) => {
     if(err != null)
         console.log('==> Error: ' + err)

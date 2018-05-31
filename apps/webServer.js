@@ -7,7 +7,9 @@ app.createServer((req, res) => {
 
     // Xử lý nếu req chỉ '/' thì load nội dung file index.html
     var req_url = (req.url == '/') ? '/index.html' : req.url
-
+    if(req_url === "req_url"){
+        
+    }
     // Lưu ý: sau khi res nội dung của index.html về client thì ở file HTML sẽ có những
     //       request yêu cầu load nội dung của Resource (cụ thể ở đây là file js/script.js và img/favicon.ico)
     //       nên function này sẽ được gọi lại (callback) nhiều lần (cụ thể coi log ở dòng code thứ 6)
@@ -45,6 +47,7 @@ app.createServer((req, res) => {
             console.log( req.url, header_type );
         }
     })
+
 }).listen(port, (err) => {
     if(err != null)
         console.log('==> Error: ' + err)
