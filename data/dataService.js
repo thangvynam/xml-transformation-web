@@ -66,13 +66,13 @@ app.createServer((req, res) => {
                             fs.readdirSync(path + '/user/').forEach(file => {
                                 var filePath = path + '/user/' + file
                                 data = fs.readFileSync(filePath, 'utf-8')
-                               
                                 if(JSON.parse(data).username===resultString[0] &&  resultString[1] === JSON.parse(data).password){
                                 
                                     check=true;
                                     tokenKey.push("102")
-                                    res.writeHeader(200, {'Content-Type': 'text/plain'})
-                                    res.end('102')
+                                    res.writeHeader(200, {'Content-Type': 'application/json'})
+                                    
+                                    res.end(JSON.stringify({ isLogin: 1 ,role :JSON.parse(data).role,username:resultString[0] }))
                                 }
                             })
                             if(!check){

@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <title>PN DEV</title>
+    <style>
+            .khoi{
+            width: 400px;
+            height: 50px;
+            margin: auto;
+        }
+        .khoi1{
+            display: block;
+            position: relative;
+            width: 100px;
+            float: left;
+        }
+        .khoi2{
+            display: block;
+            margin-right: 50px;
+            position: relative;
+            width: 200px;
+            float: right;
+        }
+
+        .khoi3{
+            margin-right: 25px;
+        }
+
+        .lon{
+            color: #1490c0fa;
+        }
+    </style>
+</head>
+<body>
+        <div class="lon">
+                <div class="row text-center"><strong style="font-size: 30px">Phiếu Bán</strong></div>
+                <div class="row" style="margin-top:20px;">
+                    <div class="khoi">
+                        <label class="khoi1">Họ tên: </label>
+                        <input class="khoi2" type="text" id="hoten">
+                    </div>
+                    <div  class="khoi">
+                        <label  class="khoi1">Chọn ngày: </label>
+                        <input  class="khoi2" type="text" id="datepicker">
+                    </div>
+                    <div  class="khoi">
+                        <label  class="khoi1">Tổng tiền: </label>
+                        <input  class="khoi2"type="number" id="tongtien">
+                    </div>
+                    
+                </div>
+                <div class="row text-center" style="margin-top:20px">
+                    <label >Tivi: </label>
+                    <select class="khoi3" id="tivi" style="width:174px; height:26px">
+                        <option selected disabled hidden>Choose here</option>
+                    </select>
+                    <label >Số lượng:</label>
+                    <input class="khoi3" type="number" id="soluong" onkeyup="TinhTien()">
+                    <label >Đơn giá: </label>
+                    <input class="khoi3" type="number" id="dongia" onkeyup="TinhTien()">
+                    <label >Tiền: </label>
+                    <input class="khoi3" type="number" id="tien" readonly>
+                </div>
+                <div class="row text-center" style="padding-bottom:30px;">
+                    <button class="btn btn-info" onclick="Nhap_Hang()" style="width:100px; height:30px; margin-top:20px;">Nhập </button>
+                    <button class="btn btn-info" onclick="Lam_Moi()" style="width:100px; height:30px; margin-top:20px; margin-left:20px;">Làm mới</button>
+                </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="../3-Doi_tuong_va_xu_ly/XuLy.js"></script>
+        <script>
+            $(
+                function(){
+                    $("#datepicker").datepicker({
+                        dateFormat: 'dd-mm-yy',
+                        changeMonth: true,
+                        changeYear: true
+                    })
+                }
+            )
+        </script>
+</body>
+</html>
