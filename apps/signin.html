@@ -75,7 +75,14 @@
             padding-bottom:10px;
             text-align: center;
         }
-        
+        ul li{
+            float: left;
+            margin-left: 2em;
+        }
+        #top-header{
+            padding-bottom: 20px;
+            display: none
+        }
         </style>
     </head>
     <body>
@@ -87,8 +94,17 @@
                         <li><a id="username" href="#"><i class="fa fa-user-o"></i> Login</a></li>
                     </ul>
                 </div>
+                <div class="col-md-8 topNav hidden-sm hidden-xs">
+                        <div class="row">
+                            <ul class="topMenu">
+                                <li class="active"><a href="/pos/bill/addswitch">Bán hàng</a></li>
+                                <li><a href="/order/manage/index">Đơn hàng </a></li>
+                            </ul>
+                        </div>
+                    </div> 
             </div>
-            <!-- /TOP HEADER -->            
+            
+            <!-- /TOP HEADER -->       
         </header>
         <!-- /HEADER -->
         <div id="signin" class="container">
@@ -131,8 +147,8 @@
                     var elem = document.getElementById('signin');
                     elem.parentNode.removeChild(elem);
                     $("#username").html(json.username);
-                    $("#content").load("nvbh.html")
-    
+                    //$("#content").load("nvbh.html")
+                    $("#top-header").css("display", "inherit");
                     
                 }else{
                     $("#signupalert").css("display", "inherit");

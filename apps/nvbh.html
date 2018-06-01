@@ -37,7 +37,7 @@
 <body>
     <div id="content">
         <div id="divform" >
-            <a href="./phieuban.html">Nhập phiếu bán</a>
+            <a id="phieuban" href="./phieuban.html">Nhập phiếu bán</a>
         </div>
         <div  id="divform">
             <a href="">Xem lịch sử bán hàng</a>
@@ -45,6 +45,11 @@
     </div>
     
 </body>
+    <script>
+        $("#phieuban").click(function(){
+            $("#content").load("phieuban.html")
+        })
+    </script>
 </html>
 
 
