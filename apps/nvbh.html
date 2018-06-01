@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PN DEV</title>
+    <style>
+        #divform{
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            margin: auto;
+            transition: all 2s;
+            -moz-transition: all 2s;
+            -webkit-transition: all 2s;
+            border-radius: 20px;
+            margin-left: 20px;
+            margin-bottom: 37px;
+            margin-top: 25px;
+            float: left;
+        }
+        #divform:hover{
+            transform: rotate(360deg)
+        }
+        #content{
+            margin: auto;
+            width: 200px;
+            height: 200px;
+        }
+        a{
+            padding: 20px;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div id="divform" >
+            <a id="phieuban" href="./phieuban.html">Nhập phiếu bán</a>
+        </div>
+        <div  id="divform">
+            <a href="">Xem lịch sử bán hàng</a>
+        </div>
+    </div>
+    
+</body>
+    <script>
+        $("#phieuban").click(function(){
+            $("#content").load("phieuban.html")
+        })
+    </script>
+</html>
+
+
+

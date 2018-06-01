@@ -1,109 +1,159 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		 
 
+        <title>PN DEV </title>
+        <!-- Font -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- Google font -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-<!--Pulling Awesome Font -->
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<style>
-    @import url(http://fonts.googleapis.com/css?family=Roboto:400);
-body {
-  background-color:#fff;
-  -webkit-font-smoothing: antialiased;
-  font: normal 14px Roboto,arial,sans-serif;
-}
+		<!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css"/>
 
-.container {
-    padding: 25px;
-    position: fixed;
-}
+		<!-- Slick -->
+		<link type="text/css" rel="stylesheet" href="./css/slick.css"/>
+		<link type="text/css" rel="stylesheet" href="./css/slick-theme.css"/>
 
-.form-login {
-    background-color: #EDEDED;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 15px;
-    border-color:#d2d2d2;
-    border-width: 5px;
-    box-shadow:0 1px 0 #cfcfcf;
-}
+		<!-- nouislider -->
+		<link type="text/css" rel="stylesheet" href="./css/nouislider.min.css"/>
 
-h4 { 
- border:0 solid #fff; 
- border-bottom-width:1px;
- padding-bottom:10px;
- text-align: center;
-}
+		<!-- Font Awesome Icon -->
+		<link rel="stylesheet" href="./css/font-awesome.min.css">
 
-.form-control {
-    border-radius: 10px;
-}
+		<!-- Custom stlylesheet -->
+		<link type="text/css" rel="stylesheet" href="./css/style.css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-.wrapper {
-    text-align: center;
-}
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-</style>
-<body>
-<div class="container">
-        <div class="row">
-            <div class="col-md-offset-5 col-md-3">
-                <div class="form-login">
-                    <h4>Welcome back.</h4>
-                    
-                    <input name="username" type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
-                    </br>
-                    <input name="password" type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
-                    </br>
-                    <div class="wrapper">
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+        <style>
+        @import url(http://fonts.googleapis.com/css?family=Roboto:400);
+        body {
+            background-color:#fff;
+            -webkit-font-smoothing: antialiased;
+            font: normal 14px Roboto,arial,sans-serif;
+        }
+        .search-btn{
+            margin-left: 13em
+        }
+        .carousel-inner>.item>img,
+        .carousel-inner>.item>a>img{
+            width: 70%;
+            margin: auto;
+        }
+        .form-login {
+            background-color: #EDEDED;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 15px;
+            border-color:#d2d2d2;
+            border-width: 5px;
+            box-shadow:0 1px 0 #cfcfcf;
+        }
+        .form-control {
+            border-radius: 10px;
+        }
+        .wrapper {
+            text-align: center;
+        }
+        h4 { 
+            border:0 solid #fff; 
+            border-bottom-width:1px;
+            padding-bottom:10px;
+            text-align: center;
+        }
+        ul li{
+            float: left;
+            margin-left: 2em;
+        }
+        #top-header{
+            padding-bottom: 20px;
+            display: none
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <!-- TOP HEADER -->
+            <div id="top-header">
+                <div class="container">
+                    <ul class="header-links pull-right">
+                        <li><a id="username" href="#"><i class="fa fa-user-o"></i> Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 topNav hidden-sm hidden-xs">
+                        <div class="row">
+                            <ul class="topMenu">
+                                <li class="active"><a href="/pos/bill/addswitch">Bán hàng</a></li>
+                                <li><a href="/order/manage/index">Đơn hàng </a></li>
+                            </ul>
+                        </div>
+                    </div> 
+            </div>
+            
+            <!-- /TOP HEADER -->       
+        </header>
+        <!-- /HEADER -->
+        <div id="signin" class="container">
+            <div class="row">
+                <div class="col-md-offset-5 col-md-3">
+                    <div class="form-login">
+                        <h4>Welcome back.</h4>
+                        <div id="signupalert" style="display:none" class="alert alert-danger">
+                            <p>Error: Please check again !</p>
+                        </div>
+                        <input name="username" type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
+                        </br>
+                        <input name="password" type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
+                        </br>
+                        <div class="wrapper">
                             <span class="group-btn">     
                                 <button id="button" class="btn btn-primary btn-md" type="submit ">login <i class="fa fa-sign-in"></i></button>
                             </span>
+                        </div>
                     </div>
-                    
-                    
                 </div>
-            
             </div>
-        </div>
-    </div>        
-    <script>
-        $(document).ready(function() {
-            $( "#button" ).click(function(e) {
-            var username = $("#userName").val()
-            var password = $("#userPassword").val()
-            var Dia_chi_Dich_vu="http://localhost:3001/login" // gửi qua DAL xử lý 
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", Dia_chi_Dich_vu, false);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send(username+"&"+password);
-            console.log(xhttp.responseText)
-            if(xhttp.responseText==="102"){
-                
-            }
-            
-    })
-    
-});
-    //var Dia_chi_Dich_vu="http://localhost:3000/login" // gửi qua DAL xử lý 
-    // //   var Tham_so="Ma_so_Xu_ly=TaiKhoan"
-    // //   var Dia_chi_Xu_ly=`${Dia_chi_Dich_vu}?${Tham_so}`
-    // var xhttp = new XMLHttpRequest();
-    // xhttp.onreadystatechange = function() {
-    //     if (this.readyState == 4 && this.status == 200) {
-    //         caches=this.responseText    
-    //         return this.responseText
+        </div>  
+        <div id="content">
         
-    //     }
-    // }
-    // xhttp.open("POST", Dia_chi_Dich_vu, false);
-    // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    // xhttp.send(name+"&"+password);
-    //     });
-    </script>
-</body>
 
-    
+        </div>      
+        <script>
+            $(document).ready(function() {
+                $( "#button" ).click(function(e) {
+                var username = $("#userName").val()
+                var password = $("#userPassword").val()
+                var Dia_chi_Dich_vu="http://localhost:3001/login" // gửi qua DAL xử lý 
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", Dia_chi_Dich_vu, false);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(username+"&"+password);
+                var json = JSON.parse(xhttp.responseText);
+                if (typeof json.username !== 'undefined'){
+                    var elem = document.getElementById('signin');
+                    elem.parentNode.removeChild(elem);
+                    $("#username").html(json.username);
+                    //$("#content").load("nvbh.html")
+                    $("#top-header").css("display", "inherit");
+                    
+                }else{
+                    $("#signupalert").css("display", "inherit");
+                }
+        })
+    });
+        </script>
+    </body>
