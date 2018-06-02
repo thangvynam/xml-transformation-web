@@ -1,10 +1,2 @@
- <Dien_thoai NCC="Apple" Ten="Apple iPhone X" Ma_So="ipx" Don_gia_Ban="22647000" NOI_BAT="true">
- </Dien_thoai>
- <Dien_thoai NCC="Apple" Ten="Apple iPhone 8 Plus" Ma_So="ip8plus" Don_gia_Ban="22647000" NOI_BAT="true">
- </Dien_thoai>
- <Dien_thoai NCC="Apple" Ten="Apple iPhone 8" Ma_So="ip8" Don_gia_Ban="18650000" NOI_BAT="true">
- </Dien_thoai>
- <Dien_thoai NCC="Apple" Ten="Apple iPhone 7 Plus" Ma_So="ip7plus" Don_gia_Ban="18387000" NOI_BAT="true">
- </Dien_thoai>
- <Dien_thoai NCC="Apple" Ten="Apple iPhone 7" Ma_So="ip7" Don_gia_Ban="14655000" NOI_BAT="true">
- </Dien_thoai>
+<Dien_thoai NCC="Samsung" Ten="Samsung Galaxy S9" Ma_So="s9" Don_gia_Ban="22365000" NOI_BAT="true" >
+</Dien_thoai>

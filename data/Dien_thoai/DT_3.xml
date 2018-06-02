@@ -1,10 +1,2 @@
- <Dien_thoai NCC="Nokia" Ten="Nokia 8 Sirocco" Ma_So="nokia8sirocco" Don_gia_Ban="19972000" NOI_BAT="true">
- </Dien_thoai>
- <Dien_thoai NCC="Nokia" Ten="Nokia 7 Plus" Ma_So="nokia7plus" Don_gia_Ban="10654000" NOI_BAT="true">
- </Dien_thoai>
- <Dien_thoai NCC="Nokia" Ten="Nokia 6 (2018)" Ma_So="nokia6(2018)" Don_gia_Ban="7458000">
- </Dien_thoai>
- <Dien_thoai NCC="Nokia" Ten="Nokia X6" Ma_So="nokiax6" Don_gia_Ban="6655000">
- </Dien_thoai>
- <Dien_thoai NCC="Nokia" Ten="Nokia 8110 4G" Ma_So="nokia81104g" Don_gia_Ban="2130000">
- </Dien_thoai>
+<Dien_thoai NCC="Samsung" Ten="Samsung Galaxy Note8" Ma_So="note8" Don_gia_Ban="19978000" NOI_BAT="true" >
+</Dien_thoai>
