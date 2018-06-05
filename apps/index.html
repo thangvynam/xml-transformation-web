@@ -150,8 +150,12 @@
                         <li><a href="./#samsung">SAMSUNG</a></li>
                         <li><a href="./#lg">LG</a></li>
                         <li><a href="./#htc">HTC</a></li>
-                        <li><a href="./#google">Google</a></li>
-                        <li><a href="./#apple">Apple</a></li>
+                        <li><a href="./#lenovo">Lenovo</a></li>
+						<li><a href="./#apple">Apple</a></li>
+						<li><a href="./#nokia">Nokia</a></li>
+						<li><a href="./#huawei">Huawei</a></li>
+						<li><a href="./#sony">Sony</a></li>
+						<li><a href="./#xiaomi">Xiaomi</a></li>
                     </ul>
                     <!-- /NAV -->
                 </div>
@@ -288,55 +292,7 @@
 					<!-- /section title -->
 
 					<!-- Products tab & slick -->
-					<div class="col-md-12">
-						<div class="row">
-							<div class="products-tabs">
-								<!-- tab -->
-								<div id="tab2" class="tab-pane fade in active">
-									<div class="products-slick" data-nav="#slick-nav-2">
-										<!-- product -->
-										<%for(var i= 0 ;i<data.dienthoai.length;i++){%>
-											<%if(data.dienthoai[i].nsx_ten === "SAMSUNG"){%>
-										<div class="product">
-											<div class="product-img">
-												<img src="/static/img/<%= data.dienthoai[i].ma%>.jpg" alt="">
-												<div class="product-label">
-													<span class="new">NEW</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category"><%= data.dienthoai[i].nsx_ten%></p>
-												<h3 class="product-name"><a href="/<%= data.dienthoai[i].ten%>"><%= data.dienthoai[i].ten%></a></h3>
-												<h4 class="product-price">$<%= data.dienthoai[i].gia%></h4>
-												
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<!-- <i class="fa fa-star"></i> -->
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-											</div>
-										</div>
-											<%}%>
-										<%}%>
-										
-										<!-- /product -->
-									</div>
-									<div id="slick-nav-2" class="products-slick-nav"></div>
-								</div>
-								<!-- /tab -->
-							</div>
-						</div>
-					</div>
+					<div id="samsungProduct"></div>
 					<!-- /Products tab & slick -->
 				</div>
 				<!-- /row -->
@@ -344,251 +300,117 @@
 				<div class="row" id="lg">
 
 						<!-- section title -->
-						<div class="col-md-12">
-							<div class="section-title">
-								<h3 class="title">LG</h3>
-							</div>
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">LG</h3>
 						</div>
-						<!-- /section title -->
-	
-						<!-- Products tab & slick -->
-						<div class="col-md-12">
-							<div class="row">
-								<div class="products-tabs">
-									<!-- tab -->
-									<div id="tab2" class="tab-pane fade in active">
-										<div class="products-slick" data-nav="#slick-nav-10">
-											<!-- product -->
-											<%for(var i= 0 ;i<data.dienthoai.length;i++){%>
-												<%if(data.dienthoai[i].nsx_ten === "LG"){%>
-											<div class="product">
-												<div class="product-img">
-													<img src="/static/img/<%= data.dienthoai[i].ma%>.jpg" alt="">
-											
-												</div>
-												<div class="product-body">
-													<p class="product-category"><%= data.dienthoai[i].nsx_ten%></p>
-													<h3 class="product-name"><a href="/<%= data.dienthoai[i].ten%>"><%= data.dienthoai[i].ten%></a></h3>
-													<h4 class="product-price">$<%= data.dienthoai[i].gia%></h4>
-													
-													<div class="product-rating">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<!-- <i class="fa fa-star"></i> -->
-													</div>
-													<div class="product-btns">
-														<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-														<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-														<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-													</div>
-												</div>
-												<div class="add-to-cart">
-													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-												</div>
-											</div>
-												<%}%>
-											<%}%>
-											<!-- /product -->
-										</div>
-										<div id="slick-nav-10" class="products-slick-nav"></div>
-									</div>
-									<!-- /tab -->
-								</div>
-							</div>
-						</div>
-						<!-- /Products tab & slick -->
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div id="lgProduct"></div>
+					<!-- /Products tab & slick -->
 					</div>
 					<!-- row -->
 				<div class="row" id="apple">
 
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">Apple</h3>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div id="appleProduct"></div>
+					<!-- /Products tab & slick -->
+				</div>
+				<div class="row" id="htc">
+						<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">HTC</h3>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div id="htcProduct"></div>
+					<!-- /Products tab & slick -->
+				</div>
+				<div class="row" id="lenovo">
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">Lenovo</h3>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div id="lenovoProduct"></div>
+					<!-- /Products tab & slick -->
+				</div>
+				<div class="row" id="nokia">
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">Nokia</h3>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div id="nokiaProduct"></div>
+					<!-- /Products tab & slick -->
+				</div>
+				<div class="row" id="huawei">
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">Huawei</h3>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div id="huaweiProduct"></div>
+					<!-- /Products tab & slick -->
+				</div>
+				<div class="row" id="sony">
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">Sony</h3>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div id="sonyProduct"></div>
+					<!-- /Products tab & slick -->
+				</div>
+				<div class="row" id="xiaomi">
 						<!-- section title -->
 						<div class="col-md-12">
 							<div class="section-title">
-								<h3 class="title">Apple</h3>
+								<h3 class="title">Xiaomi</h3>
 							</div>
 						</div>
 						<!-- /section title -->
 	
 						<!-- Products tab & slick -->
-						<div class="col-md-12">
-							<div class="row">
-								<div class="products-tabs">
-									<!-- tab -->
-									<div id="tab2" class="tab-pane fade in active">
-										<div class="products-slick" data-nav="#slick-nav-11">
-											<!-- product -->
-											<%for(var i= 0 ;i<data.dienthoai.length;i++){%>
-												<%if(data.dienthoai[i].nsx_ten === "Apple"){%>
-											<div class="product">
-												<div class="product-img">
-													<img src="/static/img/<%= data.dienthoai[i].ma%>.jpg" alt="">
-													<div class="product-label">
-														<span class="new">NEW</span>
-													</div>
-												</div>
-												<div class="product-body">
-													<p class="product-category"><%= data.dienthoai[i].nsx_ten%></p>
-													<h3 class="product-name"><a href="/<%= data.dienthoai[i].ten%>"><%= data.dienthoai[i].ten%></a></h3>
-													<h4 class="product-price">$<%= data.dienthoai[i].gia%></h4>
-													
-													<div class="product-rating">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<!-- <i class="fa fa-star"></i> -->
-													</div>
-													<div class="product-btns">
-														<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-														<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-														<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-													</div>
-												</div>
-												<div class="add-to-cart">
-													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-												</div>
-											</div>
-												<%}%>
-											<%}%>
-											<!-- /product -->
-										</div>
-										<div id="slick-nav-11" class="products-slick-nav"></div>
-									</div>
-									<!-- /tab -->
-								</div>
-							</div>
-						</div>
+						<div id="xiaomiProduct"></div>
 						<!-- /Products tab & slick -->
-					</div>
-					<div class="row" id="htc">
-							<!-- section title -->
-							<div class="col-md-12">
-								<div class="section-title">
-									<h3 class="title">HTC</h3>
-								</div>
-							</div>
-							<!-- /section title -->
-		
-							<!-- Products tab & slick -->
-							<div class="col-md-12">
-								<div class="row">
-									<div class="products-tabs">
-										<!-- tab -->
-										<div id="tab2" class="tab-pane fade in active">
-											<div class="products-slick" data-nav="#slick-nav-12">
-												<!-- product -->
-												<%for(var i= 0 ;i<data.dienthoai.length;i++){%>
-													<%if(data.dienthoai[i].nsx_ten === "HTC"){%>
-												<div class="product">
-													<div class="product-img">
-														<img src="/static/img/<%= data.dienthoai[i].ma%>.jpg" alt="">
-														<div class="product-label">
-															<span class="new">NEW</span>
-														</div>
-													</div>
-													<div class="product-body">
-														<p class="product-category"><%= data.dienthoai[i].nsx_ten%></p>
-														<h3 class="product-name"><a href="/<%= data.dienthoai[i].ten%>"><%= data.dienthoai[i].ten%></a></h3>
-														<h4 class="product-price">$<%= data.dienthoai[i].gia%></h4>
-														
-														<div class="product-rating">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<!-- <i class="fa fa-star"></i> -->
-														</div>
-														<div class="product-btns">
-															<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-															<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-															<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-														</div>
-													</div>
-													<div class="add-to-cart">
-														<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-													</div>
-												</div>
-													<%}%>
-												<%}%>
-												<!-- /product -->
-												
-											</div>
-											<div id="slick-nav-12" class="products-slick-nav"></div>
-										</div>
-										<!-- /tab -->
-									</div>
-								</div>
-							</div>
-							<!-- /Products tab & slick -->
-						</div>
-						<div class="row" id="google">
-								<!-- section title -->
-								<div class="col-md-12">
-									<div class="section-title">
-										<h3 class="title">Google</h3>
-									</div>
-								</div>
-								<!-- /section title -->
-			
-								<!-- Products tab & slick -->
-								<div class="col-md-12">
-									<div class="row">
-										<div class="products-tabs">
-											<!-- tab -->
-											<div id="tab2" class="tab-pane fade in active">
-												<div class="products-slick" data-nav="#slick-nav-13">
-													<!-- product -->
-													<%for(var i= 0 ;i<data.dienthoai.length;i++){%>
-														<%if(data.dienthoai[i].nsx_ten === "Google"){%>
-													<div class="product">
-														<div class="product-img">
-															<img src="/static/img/<%= data.dienthoai[i].ma%>.jpg" alt="">
-															<div class="product-label">
-																<span class="new">NEW</span>
-															</div>
-														</div>
-														<div class="product-body">
-															<p class="product-category"><%= data.dienthoai[i].nsx_ten%></p>
-															<h3 class="product-name"><a href="/<%= data.dienthoai[i].ten%>"><%= data.dienthoai[i].ten%></a></h3>
-															<h4 class="product-price">$<%= data.dienthoai[i].gia%></h4>
-															
-															<div class="product-rating">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<!-- <i class="fa fa-star"></i> -->
-															</div>
-															<div class="product-btns">
-																<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-																<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-																<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-															</div>
-														</div>
-														<div class="add-to-cart">
-															<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-														<%}%>
-													<%}%>
-													<!-- /product -->
-													
-												</div>
-												<div id="slick-nav-13" class="products-slick-nav"></div>
-											</div>
-											<!-- /tab -->
-										</div>
-									</div>
-								</div>
-								<!-- /Products tab & slick -->
-							</div>
-					</div>
-
-					
-			<!-- /container -->
+				</div>
+				
+			</div>
 		</div>
+		
+	</div>	
+	<!-- /container -->
+</div>
 		<!-- /SECTION -->
 		<!-- FOOTER -->
 <footer id="footer">
@@ -610,18 +432,27 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-xs-6">
+                <div class="col-md- col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">Categories</h3>
-                        <ul class="footer-links">
-                            <li><a href="./#samsung">SAMSUNG</a></li>
-                            <li><a href="./#htc">HTC</a></li>
-                            <li><a href="./#lg">LG</a></li>
-                            <li><a href="./#apple">APPLE</a></li>
-                            <li><a href="./#google">GOOGLE</a></li>
-                        </ul>
+                        <center class="footer-title">Categories</center>
+                        <ul class="footer-links col-md-6 col-xs-6">
+								<li><a href="./#samsung">SAMSUNG</a></li>
+								<li><a href="./#lg">LG</a></li>
+								<li><a href="./#htc">HTC</a></li>
+								<li><a href="./#lenovo">Lenovo</a></li>
+								<li><a href="./#apple">Apple</a></li>
+								
+						</ul>
+						<ul class="footer-links col-md-6 col-xs-6">
+							<li><a href="./#nokia">Nokia</a></li>
+							<li><a href="./#huawei">Huawei</a></li>
+							<li><a href="./#sony">Sony</a></li>
+							<li><a href="./#xiaomi">Xiaomi</a></li>
+						</ul>
                     </div>
-                </div>
+				</div>
+				
+				
 
                 <div class="clearfix visible-xs"></div>
             </div>
@@ -677,6 +508,25 @@
 				var Danh_sach_Mat_hang =Doc_Danh_sach_Mat_hang()
 				var Th_Danh_sach_Mat_hang=Tao_Chuoi_HTML_Danh_sach_Mat_hang_Noi_bat(Danh_sach_Mat_hang)
 				hightlights.innerHTML=Th_Danh_sach_Mat_hang
+				var Danh_sach_samsung =Tao_Chuoi_HTML_Danh_sach_Mat_hang_Cu_the(Danh_sach_Mat_hang,"Samsung")
+				samsungProduct.innerHTML = Danh_sach_samsung
+				var Danh_sach_samsung =Tao_Chuoi_HTML_Danh_sach_Mat_hang_Cu_the(Danh_sach_Mat_hang,"LG")
+				lgProduct.innerHTML = Danh_sach_samsung
+				var Danh_sach_samsung =Tao_Chuoi_HTML_Danh_sach_Mat_hang_Cu_the(Danh_sach_Mat_hang,"HTC")
+				htcProduct.innerHTML = Danh_sach_samsung
+				var Danh_sach_samsung =Tao_Chuoi_HTML_Danh_sach_Mat_hang_Cu_the(Danh_sach_Mat_hang,"Apple")
+				appleProduct.innerHTML = Danh_sach_samsung
+				var Danh_sach_samsung =Tao_Chuoi_HTML_Danh_sach_Mat_hang_Cu_the(Danh_sach_Mat_hang,"Lenovo")
+				lenovoProduct.innerHTML = Danh_sach_samsung
+				var Danh_sach_samsung =Tao_Chuoi_HTML_Danh_sach_Mat_hang_Cu_the(Danh_sach_Mat_hang,"Nokia")
+				nokiaProduct.innerHTML = Danh_sach_samsung
+				var Danh_sach_samsung =Tao_Chuoi_HTML_Danh_sach_Mat_hang_Cu_the(Danh_sach_Mat_hang,"Huawei")
+				huaweiProduct.innerHTML = Danh_sach_samsung
+				var Danh_sach_samsung =Tao_Chuoi_HTML_Danh_sach_Mat_hang_Cu_the(Danh_sach_Mat_hang,"Sony")
+				sonyProduct.innerHTML = Danh_sach_samsung
+				var Danh_sach_samsung =Tao_Chuoi_HTML_Danh_sach_Mat_hang_Cu_the(Danh_sach_Mat_hang,"Xiaomi")
+				xiaomiProduct.innerHTML = Danh_sach_samsung
+				
 			}
 		</script>
 	
