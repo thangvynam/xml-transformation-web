@@ -7,7 +7,7 @@ var port = 3001
 var session = []
 
 app.createServer((req, res) => {
-    check="false"
+    
     switch(req.method) {
         case 'GET':
             switch(req.url){
@@ -21,6 +21,10 @@ app.createServer((req, res) => {
 
                 case '/DanhSachDienThoai':
                     BUS.postDanhSachDienThoai()
+                    break
+                case '/Check':
+                    res.setHeader("Access-Control-Allow-Origin", '*')
+                    res.end(BUS.getCaches())
                     break
                 default:
                     res.writeHeader(404, {'Content-Type': 'text/plain'})

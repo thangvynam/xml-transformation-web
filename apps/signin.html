@@ -97,7 +97,7 @@
                 <div class="col-md-8 topNav hidden-sm hidden-xs">
                         <div class="row">
                             <ul class="topMenu">
-                                <li class="active"><a href="/pos/bill/addswitch">Bán hàng</a></li>
+                                <li class="active"><a href="./phieuban.html">Bán hàng</a></li>
                                 <li><a href="/order/manage/index">Đơn hàng </a></li>
                             </ul>
                         </div>
@@ -131,29 +131,25 @@
         <div id="content">
         
 
-        </div>      
-        <script>
-            $(document).ready(function() {
-                $( "#button" ).click(function(e) {
+        </div> 
+
+        <script src="./js/myscript.js"></script>
+        <script>           
+            $( "#button" ).click(function(e) {
                 var username = $("#userName").val()
                 var password = $("#userPassword").val()
-                var Dia_chi_Dich_vu="http://localhost:3001/login" // gửi qua DAL xử lý 
-                var xhttp = new XMLHttpRequest();
-                xhttp.open("POST", Dia_chi_Dich_vu, false);
-                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send(username+"&"+password);
-                var json = JSON.parse(xhttp.responseText);
-                if (typeof json.username !== 'undefined'){
+                json = checkUser(username,password)
+                if(typeof json.username !== 'undefined'){
                     var elem = document.getElementById('signin');
                     elem.parentNode.removeChild(elem);
                     $("#username").html(json.username);
                     //$("#content").load("nvbh.html")
                     $("#top-header").css("display", "inherit");
-                    
                 }else{
                     $("#signupalert").css("display", "inherit");
                 }
+            
         })
-    });
+            
         </script>
     </body>

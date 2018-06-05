@@ -7,9 +7,8 @@ app.createServer((req, res) => {
 
     // Xử lý nếu req chỉ '/' thì load nội dung file index.html
     var req_url = (req.url == '/') ? '/index.html' : req.url
-    if(req_url === "req_url"){
-        
-    }
+   
+   
     // Lưu ý: sau khi res nội dung của index.html về client thì ở file HTML sẽ có những
     //       request yêu cầu load nội dung của Resource (cụ thể ở đây là file js/script.js và img/favicon.ico)
     //       nên function này sẽ được gọi lại (callback) nhiều lần (cụ thể coi log ở dòng code thứ 6)
@@ -30,7 +29,18 @@ app.createServer((req, res) => {
                         }[ req.url.substr(file_extension) ];
 
     // Đọc file theo req gửi từ Client lên (lưu ý, phần này sẽ được call nhiều lần để đọc các file Resource)
+    // if(req_url.includes("Samsung")){
+    //     req_url=req_url.substring(1,req_url.length)
+    //         do {
+    //             temp = req_url
+    //             req_url=req_url.replace("%20"," ")
+    //         } while (temp!=req_url);
+    
+    //         console.log(req_url)
+    //         res.end("tada")
+    // }else{}
     fs.readFile( __dirname + req_url, (err, data)=>{
+        
         if (err) {
             // Xử lý phần tìm không thấy resource ở Server
             console.log('==> Error: ' + err)

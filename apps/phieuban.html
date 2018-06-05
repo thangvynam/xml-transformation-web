@@ -37,7 +37,12 @@
         }
     </style>
 </head>
-<body>
+<body >
+        <div id="signupalert" style="display:none" class="alert alert-danger">
+            <a href="./signin.html">
+                <center>You must sign in</center>
+            </a>    
+        </div>
         <div class="lon">
                 <div class="row text-center"><strong style="font-size: 30px">Phiếu Bán</strong></div>
                 <div class="row" style="margin-top:20px;">
@@ -76,17 +81,27 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="../3-Doi_tuong_va_xu_ly/XuLy.js"></script>
+        <script src="./js/myscript.js"></script>
+
         <script>
-            $(
-                function(){
+            
+            $(function(){
+                var Dia_chi_Dich_vu="http://localhost:3001/Check" // gửi qua DAL xử lý 
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", Dia_chi_Dich_vu, false);
+                xhttp.send();
+                json = JSON.parse(xhttp.responseText);
+                console.log(json.isLogin)
+                if(typeof json.isLogin === 'undefined'){
+                    $(".lon").css("display", "none");
+                    $("#signupalert").css("display", "inherit");
+                }else{
                     $("#datepicker").datepicker({
-                        dateFormat: 'dd-mm-yy',
-                        changeMonth: true,
-                        changeYear: true
-                    })
-                }
-            )
+                    dateFormat: 'dd-mm-yy',
+                    changeMonth: true,
+                    changeYear: true
+                })}
+            })
         </script>
 </body>
 </html>
