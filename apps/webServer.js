@@ -4,10 +4,23 @@ var fs = require('fs')
 var port = 3002
 
 app.createServer((req, res) => {
-
+    check=false
     // Xử lý nếu req chỉ '/' thì load nội dung file index.html
     var req_url = (req.url == '/') ? '/index.html' : req.url
-   
+    if(req_url.includes("Samsung") ||  req_url.includes("HTC") || req_url.includes("Apple") || req_url.includes("LG")
+        || req_url.includes("Lenovo") || req_url.includes("Nokia") || req_url.includes("Huawei") || req_url.includes("Sony") || req_url.includes("Xiaomi")){
+            req_url = "/product.html"
+            check=true
+    }
+    switch(req.method) {
+        case 'GET':
+            switch(req.url){
+                case '/detail-product':
+                    res.writeHeader(200, {'Content-Type': 'application/json'})
+                    res.end(JSON.stringify({ nameProduct: nameProduct }))
+                    break
+            }
+    }
    
     // Lưu ý: sau khi res nội dung của index.html về client thì ở file HTML sẽ có những
     //       request yêu cầu load nội dung của Resource (cụ thể ở đây là file js/script.js và img/favicon.ico)
@@ -27,18 +40,11 @@ app.createServer((req, res) => {
                         '.css' : 'text/css',
                         '.js' : 'text/javascript'
                         }[ req.url.substr(file_extension) ];
-
+    if(check){
+        header_type = 'text/html'
+    }
     // Đọc file theo req gửi từ Client lên (lưu ý, phần này sẽ được call nhiều lần để đọc các file Resource)
-    // if(req_url.includes("Samsung")){
-    //     req_url=req_url.substring(1,req_url.length)
-    //         do {
-    //             temp = req_url
-    //             req_url=req_url.replace("%20"," ")
-    //         } while (temp!=req_url);
     
-    //         console.log(req_url)
-    //         res.end("tada")
-    // }else{}
     fs.readFile( __dirname + req_url, (err, data)=>{
         
         if (err) {
@@ -57,6 +63,8 @@ app.createServer((req, res) => {
             console.log( req.url, header_type );
         }
     })
+    
+    
 
 }).listen(port, (err) => {
     if(err != null)
