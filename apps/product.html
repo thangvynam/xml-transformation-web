@@ -392,9 +392,14 @@
 		document.body.onload =() => {
 			url =window.location.href
 			var Danh_sach_Mat_hang =Doc_Danh_sach_Mat_hang()
-			
-			json =nameProduct(url,Danh_sach_Mat_hang)
-			$(".nameProduct").html(JSON.parse(json).Ten)
+			var file_extension = url.lastIndexOf('/');
+			var name=url.substr(file_extension)
+			name=name.substring(1,name.length)
+			do {
+				temp = name
+				name=name.replace("%20"," ")
+			} while (temp!=name);
+			json =nameProduct(name,Danh_sach_Mat_hang)
 			$(".product-price").html(JSON.parse(json).Don_gia_Ban)
 			$(".product-ram").html(JSON.parse(json).RAM)
 			$(".product-battery").html(JSON.parse(json).PIN)
@@ -406,7 +411,6 @@
 			temp.alt=""
 			productImage.innerHTML=temp.outerHTML
 			relatedProduct.innerHTML = Tao_Chuoi_HTML_Danh_sach_Mat_hang_lien_quan(Danh_sach_Mat_hang,JSON.parse(json).NCC,JSON.parse(json).Ten)
-			
 		}
 
 			

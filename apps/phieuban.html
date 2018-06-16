@@ -7,12 +7,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+     <!-- Font -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <!-- Google font -->
+     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+     <!-- Bootstrap -->
+     <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css"/>
+
+     <!-- Slick -->
+     <link type="text/css" rel="stylesheet" href="./css/slick.css"/>
+     <link type="text/css" rel="stylesheet" href="./css/slick-theme.css"/>
+
+     <!-- nouislider -->
+     <link type="text/css" rel="stylesheet" href="./css/nouislider.min.css"/>
+
+     <!-- Font Awesome Icon -->
+     <link rel="stylesheet" href="./css/font-awesome.min.css">
+
+     <!-- Custom stlylesheet -->
+     <link type="text/css" rel="stylesheet" href="./css/style.css"/>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+     <!-- jQuery library -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+     <!-- Latest compiled JavaScript -->
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
     <title>PN DEV</title>
     <style>
         .khoi{
             width: 400px;
             height: 50px;
-            margin: auto;
+            margin:auto
         }
         .khoi1{
             display: block;
@@ -34,7 +62,17 @@
 
         .lon{
             color: #1490c0fa;
+            
         }
+        ul li{
+            float: left;
+            margin-left: 2em;
+        }
+        #top-header{
+            padding-bottom: 20px;
+            
+        }
+        
     </style>
 </head>
 <body >
@@ -43,9 +81,28 @@
                 <center>You must sign in</center>
             </a>    
         </div>
+        <header>
+            <!-- TOP HEADER -->
+            <div id="top-header">
+                <div class="container">
+                    <ul class="header-links pull-right">
+                        <li><a id="username" href="#"><i class="fa fa-user-o"></i> </a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 topNav hidden-sm hidden-xs">
+                        <div class="row">
+                            <ul class="topMenu">
+                                <li><a href="/order/manage/index">Đơn hàng </a></li>
+                            </ul>
+                        </div>
+                </div> 
+            </div>
+            
+            <!-- /TOP HEADER -->       
+        </header>
         <div class="lon">
                 <div class="row text-center"><strong style="font-size: 30px">Phiếu Bán</strong></div>
-                <div class="row" style="margin-top:20px;">
+                <div class="row" >
                     <div class="khoi">
                         <label class="khoi1">Họ tên khách: </label>
                         <input class="khoi2" type="text" id="hoten">
@@ -54,23 +111,26 @@
                         <label  class="khoi1">Chọn ngày: </label>
                         <input  class="khoi2" type="text" id="datepicker">
                     </div>
-                    <div  class="khoi">
-                        <label  class="khoi1">Tổng tiền: </label>
-                        <input  class="khoi2"type="number" id="tongtien">
-                    </div>
+                    
                     
                 </div>
-                <div class="row text-center" style="margin-top:20px">
-                    <label >Tivi: </label>
-                    <select class="khoi3" id="tivi" style="width:174px; height:26px">
-                        <option selected disabled hidden>Choose here</option>
-                    </select>
-                    <label >Số lượng:</label>
-                    <input class="khoi3" type="number" id="soluong" onkeyup="TinhTien()">
-                    <label >Đơn giá: </label>
-                    <input class="khoi3" type="number" id="dongia" onkeyup="TinhTien()">
-                    <label >Tiền: </label>
-                    <input class="khoi3" type="number" id="tien" readonly>
+                <div class="row" style="margin-top:20px">
+                    <div class="khoi"> 
+                            <label class="khoi1" >Loại điện thoại: </label>
+                            <select class="khoi2" id="idSelect" style="width:174px; height:26px">
+                                <option selected disabled hidden>Choose here</option>
+                            </select>
+                    </div>
+                    <div class="khoi">
+                            <label >Số lượng:</label>
+                            <input class="khoi2" type="number" id="soluong" onkeyup="TinhTien()">
+                    </div>
+                   
+                    <div class="khoi">
+                            <label >Tiền: </label>
+                            <span class="khoi2" id="tien"></span>
+                    </div>
+                   
                 </div>
                 <div class="row text-center" style="padding-bottom:30px;">
                     <button class="btn btn-info" onclick="Nhap_Hang()" style="width:100px; height:30px; margin-top:20px;">Nhập </button>
@@ -94,14 +154,51 @@
                 console.log(json.isLogin)
                 if(typeof json.isLogin === 'undefined'){
                     $(".lon").css("display", "none");
+                    $("#top-header").css("display", "none");
                     $("#signupalert").css("display", "inherit");
                 }else{
+                    json=getNameIsLogin()
+                    tenNV=json.username
+                    $("#username").html(tenNV);
                     $("#datepicker").datepicker({
                     dateFormat: 'dd-mm-yy',
                     changeMonth: true,
-                    changeYear: true
-                })}
+                    changeYear: true})
+                    Danh_sach_Mat_hang=Doc_Danh_sach_Mat_hang()
+                    var data = Du_lieu_dien_thoai(Danh_sach_Mat_hang)
+                    var select = document.getElementById('idSelect');
+                    for (var i = 0; i<data.length; i++){
+                    var opt = document.createElement('option');
+                    opt.value = data[i];
+                    opt.innerHTML = data[i];
+                    select.appendChild(opt);
+                    
+                   
+                    $("#soluong").click(function(){
+                        selectedValue = select.options[select.selectedIndex].text;
+                        if(selectedValue!="Choose here"){
+                            var soluong = parseInt($("#soluong").val())
+                            json =nameProduct(selectedValue,Danh_sach_Mat_hang)
+                            $("#tien").html(soluong*parseInt(JSON.parse(json).Don_gia_Ban))
+                        }
+                    })
+            }
+                }
             })
+
+            function Nhap_Hang(){
+                var tenKhach=$("#hoten").val()
+                var soluong=$("#soluong").val()
+                var ngay=$("#datepicker").val()
+                
+                var tien =$("#tien").text()
+                var Dia_chi_Dich_vu="http://localhost:3001/phieuban" // gửi qua DAL xử lý 
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", Dia_chi_Dich_vu, false);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(tenNV+"&"+tenKhach+"&"+soluong+"&"+ngay+"&"+selectedValue+"&"+tien);
+                alert("Đã thêm thành công ")
+            }
         </script>
 </body>
 </html>

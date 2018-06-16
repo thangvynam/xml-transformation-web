@@ -7,9 +7,12 @@ var port = 3000
 var path = __dirname 
 var tokenKey = []
 var user = {};
+var obj = {
+    table: []
+};
 function checkAuth(headers){
     var uid = headers.uid
-    console.log(uid)
+    
     for(var i = 0; i < tokenKey.length; i++){
         if(uid == tokenKey[i]){
             return true
@@ -43,12 +46,13 @@ app.createServer((req, res) => {
             break
         case 'POST':
             var getMethod = require('./service/getMethod.js')
+            var resultString =""
             switch(req.url){
                 case '/login':
                     // console.log(req.headers)
                     // console.log(req.body)
                     let body = [];
-                    var resultString =""
+                    
                     req.on('data', (chunk) => {
                         body.push(chunk)
                         resultString+=chunk
@@ -78,9 +82,6 @@ app.createServer((req, res) => {
                             if(!check){
                                 res.end('103')
                             }
-                            // var builder = new xml2js.Builder()
-                            // var xml = builder.buildObject(danhSach_DienThoai)
-                            // return xml
                         }
 
                     })
@@ -107,7 +108,40 @@ app.createServer((req, res) => {
                         res.end("Request was not support!!!")
                     }
                     break
-
+                case '/phieuban':
+                    
+                    req.on('data', (chunk) => {
+                       
+                        resultString+=chunk
+                        
+                    }).on('end', () => {
+                        
+                        resultString=resultString.split("&")
+                        var tenNV = resultString[0]
+                        var tenKhach = resultString[1]
+                        var soluong = resultString[2]
+                        var ngay = resultString[3]
+                        var tenDT = resultString[4]
+                        var tien = resultString[5]
+                        
+                        fs.readFile(`./phieu-ban/${tenNV}.json`, 'utf8', function readFileCallback(err, data){
+                            if (err){
+                                
+                                if(err.syscall === "open"){
+                                    obj.table.push({tenKhach: tenKhach, soluong:soluong,ngay:ngay,tenDT:tenDT});
+                                    var json = JSON.stringify(obj);
+                                    fs.writeFile(`${tenNV}.json`, json, 'utf8'); // write it back 
+                                }
+                            } else {
+                            obj = JSON.parse(data); //now it an object
+                            obj.table.push({tenKhach: tenKhach, soluong:soluong,ngay:ngay,tenDT:tenDT});
+                            var json = JSON.stringify(obj); //convert it back to json
+                            fs.writeFile(`${tenNV}.json`, json, 'utf8'); // write it back 
+                        }});
+                        res.end("chưa xong")
+                        }
+                    )
+                    break
                 default:
                     res.writeHeader(404, {'Content-Type': 'text/plain'})
                     res.end("Request was not support!!!")
