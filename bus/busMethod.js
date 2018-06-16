@@ -10,6 +10,21 @@ var caches=""
 var CUA_HANG=""
 var DANH_SACH_DT=""
 
+var postPhieuBan= (string )=>{
+    var Dia_chi_Dich_vu="http://localhost:3000/phieuban" // gửi qua DAL xử lý 
+    //   var Tham_so="Ma_so_Xu_ly=TaiKhoan"
+    //   var Dia_chi_Xu_ly=`${Dia_chi_Dich_vu}?${Tham_so}`
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+               
+        }
+    }
+    xhttp.open("POST", Dia_chi_Dich_vu, false);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(string);
+}
+
 var postUserName =(name,password)=>{
     
     var Dia_chi_Dich_vu="http://localhost:3000/login" // gửi qua DAL xử lý 
@@ -69,5 +84,6 @@ module.exports = {
     getCaches:getCaches,
     postCuaHang:postCuaHang,
     postDanhSachDienThoai:postDanhSachDienThoai,
-    getDanhSachDT:getDanhSachDT
+    getDanhSachDT:getDanhSachDT,
+    postPhieuBan:postPhieuBan
 }

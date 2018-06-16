@@ -134,7 +134,10 @@
         </div> 
 
         <script src="./js/myscript.js"></script>
-        <script>           
+        <script>         
+         $(function(){
+
+            
             $( "#button" ).click(function(e) {
                 var username = $("#userName").val()
                 var password = $("#userPassword").val()
@@ -145,11 +148,14 @@
                     $("#username").html(json.username);
                     //$("#content").load("nvbh.html")
                     $("#top-header").css("display", "inherit");
+                    setNameIsLogin(json.username)
                 }else{
                     $("#signupalert").css("display", "inherit");
                 }
             
         })
+        })
+           
             
         </script>
     </body>

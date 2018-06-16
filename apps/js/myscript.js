@@ -1,14 +1,8 @@
-var json =null
 
-function nameProduct(url,Danh_sach){
-    var file_extension = url.lastIndexOf('/');
-    var name=url.substr(file_extension)
-    name=name.substring(1,name.length)
-          do {
-              temp = name
-              name=name.replace("%20"," ")
-          } while (temp!=name);
-    
+function getNameIsLogin(){
+  return json
+}
+function nameProduct(name,Danh_sach){
     for (var i = 0; i < Danh_sach.getElementsByTagName("Dien_thoai").length; i++) {
       var Mat_hang = Danh_sach.getElementsByTagName("Dien_thoai")[i]
        Ten = Mat_hang.getAttribute("Ten")
@@ -37,16 +31,25 @@ function Doc_Danh_sach_Mat_hang() {
     return Du_lieu
 }
 
+function Du_lieu_dien_thoai(Danh_sach){
+  var tenDT = new Array();
+  for (var i = 0; i < Danh_sach.getElementsByTagName("Dien_thoai").length; i++){
+    var Mat_hang = Danh_sach.getElementsByTagName("Dien_thoai")[i]
+    var Ten = Mat_hang.getAttribute("Ten")
+    tenDT.push(Ten)
+  }
+  return tenDT
+}
 function checkUser(username,password){
  
-    var Dia_chi_Dich_vu="http://localhost:3001/login" // gửi qua DAL xử lý 
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", Dia_chi_Dich_vu, false);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(username+"&"+password);
-    json = JSON.parse(xhttp.responseText);
-   
-    return json
+      var Dia_chi_Dich_vu="http://localhost:3001/login" // gửi qua DAL xử lý 
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("POST", Dia_chi_Dich_vu, false);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send(username+"&"+password);
+      json = JSON.parse(xhttp.responseText);
+      json_global=json
+      return json
 }
 function Tao_Chuoi_HTML_Danh_sach_Mat_hang_Noi_bat(Danh_sach) {
   

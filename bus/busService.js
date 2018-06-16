@@ -58,11 +58,15 @@ app.createServer((req, res) => {
                                 resultString=resultString.split("&")
                                 var username = resultString[0]
                                 var password = resultString[1]
-                            
                                 BUS.postUserName(username,password) // đi qua 3000 / login
                                 result=BUS.getCaches()
-                            
                                 break;
+                            case '/phieuban':
+                                
+                               
+                                BUS.postPhieuBan(resultString)
+                                console.log(resultString)
+                                break
                             }
                             console.log(result)
                             res.end(result)
