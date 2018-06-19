@@ -124,19 +124,20 @@ app.createServer((req, res) => {
                         var tenDT = resultString[4]
                         var tien = resultString[5]
                         
-                        fs.readFile(`./phieu-ban/${tenNV}.json`, 'utf8', function readFileCallback(err, data){
+                        var dia_chi_local ="./phieu-ban"; 
+                        fs.readFile(`${dia_chi_local}/${tenNV}.json`, 'utf8', function readFileCallback(err, data){
                             if (err){
                                 
                                 if(err.syscall === "open"){
                                     obj.table.push({tenKhach: tenKhach, soluong:soluong,ngay:ngay,tenDT:tenDT});
                                     var json = JSON.stringify(obj);
-                                    fs.writeFile(`${tenNV}.json`, json, 'utf8'); // write it back 
+                                    fs.writeFile(`${dia_chi_local}/${tenNV}.json`, json, 'utf8'); // write it back 
                                 }
                             } else {
                             obj = JSON.parse(data); //now it an object
                             obj.table.push({tenKhach: tenKhach, soluong:soluong,ngay:ngay,tenDT:tenDT});
                             var json = JSON.stringify(obj); //convert it back to json
-                            fs.writeFile(`${tenNV}.json`, json, 'utf8'); // write it back 
+                            fs.writeFile("./phieu-ban/"+`${tenNV}.json`, json, 'utf8'); // write it back 
                         }});
                         res.end("chưa xong")
                         }

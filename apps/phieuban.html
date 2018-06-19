@@ -117,19 +117,21 @@
                 <div class="row" style="margin-top:20px">
                     <div class="khoi"> 
                             <label class="khoi1" >Loại điện thoại: </label>
-                            <select class="khoi2" id="idSelect" style="width:174px; height:26px">
+                            <select class="khoi2" id="idSelect" style="width:199px; height:26px;margin-right: 13%;">
                                 <option selected disabled hidden>Choose here</option>
                             </select>
                     </div>
                     <div class="khoi">
                             <label >Số lượng:</label>
-                            <input class="khoi2" type="number" id="soluong" onkeyup="TinhTien()">
+                            <input class="khoi2" type="number" id="soluong" onkeyup="TinhTien()" >
+                    </div>
+                    <div class="khoi">
+                        <img id="imgArrow" src="./img/right-arrow.png" style="width:50px;height:50px;cursor:pointer" alt="right-arrow">
+                        <span class="khoi2" style="font-size:20px">Tiền : </span>
+                        <span class="khoi2" id="tien"></span>
                     </div>
                    
-                    <div class="khoi">
-                            <label >Tiền: </label>
-                            <span class="khoi2" id="tien"></span>
-                    </div>
+                    
                    
                 </div>
                 <div class="row text-center" style="padding-bottom:30px;">
@@ -172,15 +174,17 @@
                     opt.value = data[i];
                     opt.innerHTML = data[i];
                     select.appendChild(opt);
-                    
+                
                    
-                    $("#soluong").click(function(){
+
+                    $("#imgArrow").click(function(){
                         selectedValue = select.options[select.selectedIndex].text;
                         if(selectedValue!="Choose here"){
                             var soluong = parseInt($("#soluong").val())
                             json =nameProduct(selectedValue,Danh_sach_Mat_hang)
                             $("#tien").html(soluong*parseInt(JSON.parse(json).Don_gia_Ban))
                         }
+                    
                     })
             }
                 }
