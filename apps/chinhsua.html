@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PN DEV</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-color: #EDEDED;
+        }
+        .container{
+            background-color: white;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            
+            border-radius: 15px;
+            border-color:#d2d2d2;
+            border-width: 5px;
+            box-shadow:0 1px 0 #cfcfcf;
+            margin-top: 5em;
+            
+        }
+        #thongtin{
+            float: left;
+            width: 50%;
+            
+        }
+        #image{
+            float: left;
+            width: 50%;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="signupalert" style="display:none" class="alert alert-danger">
+        <a href="./signin.html">
+            <center>You must sign in</center>
+        </a>    
+    </div>
+    <div class="container">
+        <form class="form-horizontal" >
+            <div id="thongtin">
+                    <div class="form-group"> 
+                            <label class="control-label col-sm-2" >Tên điện thoại </label>
+                            <select class="col-sm-5" id="idSelect" style="width:199px; height:26px;margin-left:1em">
+                                <option selected disabled hidden>Choose here</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                            <label class="control-label col-sm-2">Giá cũ:</label>
+                            <div class="col-sm-3">          
+                                <input  class="form-control" id="giaCu" value="" readonly >
+                            </div>
+                        </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Giá sửa:</label>
+                        <div class="col-sm-3">          
+                            <input  class="form-control" id="tien" placeholder="Nhập giá mới" >
+                        </div>
+                    </div>
+            </div>
+            <div id="image">
+                <!-- <img src="./img/oppo.png" width="460" height="345" alt="hình" > -->
+            </div>
+            
+        </form>
+        <button type="submit" id="button" class="btn btn-default">Chỉnh sửa</button>
+    </div>
+    <script src="./js/myscript.js"></script>
+    <script>
+        $(function(){
+            var Dia_chi_Dich_vu="http://localhost:3001/Check" // gửi qua DAL xử lý 
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", Dia_chi_Dich_vu, false);
+                xhttp.send();
+                json = JSON.parse(xhttp.responseText);
+                if(typeof json.isLogin === 'undefined'){
+                    $(".container").css("display", "none");
+                    $("#signupalert").css("display", "inherit");
+                }else{
+                    Danh_sach_Mat_hang=Doc_Danh_sach_Mat_hang()
+                    var data = Du_lieu_dien_thoai(Danh_sach_Mat_hang)
+                    var select = document.getElementById('idSelect');
+                    for (var i = 0; i<data.length; i++){
+                        var opt = document.createElement('option');
+                        opt.value = data[i];
+                        opt.innerHTML = data[i];
+                        select.appendChild(opt);
+                    }
+                    $("#idSelect").change(function(){ 
+                        var obj= {}
+                        var tenDT =$(this).val()
+                        image.innerHTML=Tra_Ma_So(Danh_sach_Mat_hang,tenDT,obj)
+                        giaCu.value = obj.value
+                        
+                    });
+                    $("#button").click(function(){
+                        var tenDT =select.options[select.selectedIndex].text
+                        var tien = $("#tien").val()
+                        var Dia_chi_Dich_vu="http://localhost:3001/chinhsua" // gửi qua DAL xử lý 
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.open("POST", Dia_chi_Dich_vu, false);
+                        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhttp.send(tenDT+"&"+tien);
+                        alert("Đã chỉnh sửa thành công ")
+            })
+                }
+            })
+        
+    </script>
+    
+</body>
+</html>

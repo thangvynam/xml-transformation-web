@@ -7,12 +7,11 @@ var port = 3000
 var path = __dirname 
 var tokenKey = []
 var user = {};
-var obj = {
-    table: []
-};
+
+let i=0
 function checkAuth(headers){
     var uid = headers.uid
-    
+    console.log('uid:'+uid)
     for(var i = 0; i < tokenKey.length; i++){
         if(uid == tokenKey[i]){
             return true
@@ -27,15 +26,7 @@ app.createServer((req, res) => {
         case 'GET':
             var getMethod = require('./service/getMethod.js')
             switch(req.url){
-                case '/CuaHang':
-                   
-                case '/DanhSach_Tivi':
-                   
-                    res.writeHeader(200, {'Content-Type': 'text/xml'})
-                    var data = getMethod.get_DienThoai()
-                    res.end(data)
-                    break
-
+               
                 default:
                     res.writeHeader(404, {'Content-Type': 'text/plain'})
                     res.end("Request was not support!!!")
@@ -49,8 +40,7 @@ app.createServer((req, res) => {
             var resultString =""
             switch(req.url){
                 case '/login':
-                    // console.log(req.headers)
-                    // console.log(req.body)
+                    
                     let body = [];
                     
                     req.on('data', (chunk) => {
@@ -97,7 +87,8 @@ app.createServer((req, res) => {
                         res.end("Request was not support!!!")
                     }
                     break
-                case '/DanhSachDienThoai':                   
+                case '/DanhSachDienThoai': 
+
                     if(checkAuth(req.headers) === true){
                         res.writeHeader(200, {'Content-Type': 'text/xml'})
                         var data =  getMethod.get_DienThoai()
@@ -105,7 +96,7 @@ app.createServer((req, res) => {
                     }
                     else {
                         res.writeHeader(404, {'Content-Type': 'text/plain'})
-                        res.end("Request was not support!!!")
+                        res.end("Request was not support!!! nam nam")
                     }
                     break
                 case '/phieuban':
@@ -126,22 +117,58 @@ app.createServer((req, res) => {
                         
                         var dia_chi_local ="./phieu-ban"; 
                         fs.readFile(`${dia_chi_local}/${tenNV}.json`, 'utf8', function readFileCallback(err, data){
+                            var obj = {
+                                table: []
+                            };
                             if (err){
                                 
                                 if(err.syscall === "open"){
-                                    obj.table.push({tenKhach: tenKhach, soluong:soluong,ngay:ngay,tenDT:tenDT});
+                                    console.log(tenKhach)
+                                    obj.table.push({tenKhach: tenKhach, soluong:soluong,ngay:ngay,tenDT:tenDT,tien:tien});
                                     var json = JSON.stringify(obj);
                                     fs.writeFile(`${dia_chi_local}/${tenNV}.json`, json, 'utf8'); // write it back 
+                                    
                                 }
                             } else {
-                            obj = JSON.parse(data); //now it an object
-                            obj.table.push({tenKhach: tenKhach, soluong:soluong,ngay:ngay,tenDT:tenDT});
+                            if(data!= "")
+                                obj = JSON.parse(data); //now it an object
+                            obj.table.push({tenKhach: tenKhach, soluong:soluong,ngay:ngay,tenDT:tenDT,tien:tien});
                             var json = JSON.stringify(obj); //convert it back to json
                             fs.writeFile("./phieu-ban/"+`${tenNV}.json`, json, 'utf8'); // write it back 
                         }});
                         res.end("chưa xong")
                         }
                     )
+                    break
+                case '/danhsachphieuban':
+                    req.on('data', (chunk) => {
+                        resultString+=chunk
+                    }).on('end', () => {
+                        var dia_chi_local ="./phieu-ban"; 
+                        
+                        fs.readFile(`${dia_chi_local}/${resultString}.json`, 'utf8', function readFileCallback(err, data){
+                            var obj = {
+                                table: []
+                            };
+                            if(data!="")
+                                obj = JSON.parse(data); //now it an object
+                            var json = JSON.stringify(obj); //convert it back to json
+                            
+                            res.writeHeader(200, {'Content-Type': 'application/json'})
+                            res.end(json)
+                        });   
+                    })
+                    break
+                case '/chinhsua':
+                    req.on('data', (chunk) => {
+                        resultString+=chunk
+                    }).on('end', () => {
+                        var tenDT = resultString.split("&")[0]
+                        var giaMoi = resultString.split("&")[1]
+                        getMethod.chinhsua_DienThoai(tenDT,giaMoi)
+                        res.end("true")
+                        
+                    })
                     break
                 default:
                     res.writeHeader(404, {'Content-Type': 'text/plain'})

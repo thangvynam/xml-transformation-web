@@ -62,15 +62,32 @@
 
         .lon{
             color: #1490c0fa;
+            background-color: white;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 15px;
+            border-color:#d2d2d2;
+            border-width: 5px;
+            box-shadow:0 1px 0 #cfcfcf;
+            margin-left: 20em;
+            margin-right: 20em
             
         }
         ul li{
             float: left;
             margin-left: 2em;
         }
-        #top-header{
+        #top-heade{
             padding-bottom: 20px;
             
+        }
+        #username{
+            font-size: 2em
+        }
+        body{
+            background-color: #EDEDED;
         }
         
     </style>
@@ -82,22 +99,20 @@
             </a>    
         </div>
         <header>
-            <!-- TOP HEADER -->
-            <div id="top-header">
-                <div class="container">
-                    <ul class="header-links pull-right">
-                        <li><a id="username" href="#"><i class="fa fa-user-o"></i> </a></li>
-                    </ul>
-                </div>
-                <div class="col-md-8 topNav hidden-sm hidden-xs">
-                        <div class="row">
-                            <ul class="topMenu">
-                                <li><a href="/order/manage/index">Đơn hàng </a></li>
-                            </ul>
-                        </div>
-                </div> 
+            <div id="top-heade">
+                
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                      <ul class="nav navbar-nav">
+                        
+                        <li><a href="./danhsachphieuban.html">Đơn hàng </a></li>
+                      </ul>
+                        <ul class="header-links pull-right">
+                            <li><a id="username" href="#" style="color: red;"><i class="fa fa-user-o"></i> Login</a></li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
-            
             <!-- /TOP HEADER -->       
         </header>
         <div class="lon">
@@ -126,7 +141,7 @@
                             <input class="khoi2" type="number" id="soluong" onkeyup="TinhTien()" >
                     </div>
                     <div class="khoi">
-                        <img id="imgArrow" src="./img/right-arrow.png" style="width:50px;height:50px;cursor:pointer" alt="right-arrow">
+                        <img id="imgArrow" src="./img/right-arrow.jpg" style="width:50px;height:50px;cursor:pointer" alt="right-arrow">
                         <span class="khoi2" style="font-size:20px">Tiền : </span>
                         <span class="khoi2" id="tien"></span>
                     </div>
@@ -153,10 +168,10 @@
                 xhttp.open("GET", Dia_chi_Dich_vu, false);
                 xhttp.send();
                 json = JSON.parse(xhttp.responseText);
-                console.log(json.isLogin)
+               
                 if(typeof json.isLogin === 'undefined'){
                     $(".lon").css("display", "none");
-                    $("#top-header").css("display", "none");
+                    $("#top-heade").css("display", "none");
                     $("#signupalert").css("display", "inherit");
                 }else{
                     json=getNameIsLogin()
@@ -174,9 +189,6 @@
                     opt.value = data[i];
                     opt.innerHTML = data[i];
                     select.appendChild(opt);
-                
-                   
-
                     $("#imgArrow").click(function(){
                         selectedValue = select.options[select.selectedIndex].text;
                         if(selectedValue!="Choose here"){
@@ -202,6 +214,10 @@
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhttp.send(tenNV+"&"+tenKhach+"&"+soluong+"&"+ngay+"&"+selectedValue+"&"+tien);
                 alert("Đã thêm thành công ")
+                $("#hoten").val("")
+                $("#soluong").val("")
+                $("#datepicker").val("")
+                $("#tien").text("")
             }
         </script>
 </body>

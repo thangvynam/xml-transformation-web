@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Document</title>
+		<title class="nameProduct">Document</title>
         <!-- Font-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  		<!-- Google font -->
@@ -250,7 +250,7 @@
 						<div id="product-tab">
 							<!-- product tab nav -->
 							<ul class="tab-nav">
-								<li class="active "><a class="nameProduct" style="font-size:2em" data-toggle="tab" href="#tab1"></a></li>
+								<li class="active "><a class="nameProduct" style="font-size:2em" data-toggle="tab" href="#tab1">Chi tiết sản phẩm</a></li>
 							</ul>
 							<!-- /product tab nav -->
 
@@ -316,8 +316,8 @@
 								<h3 class="footer-title">About Us</h3>
 								<p>PN là nhóm lập trình viên về các mảng : mobile , web .Gồm các thành viên tiêu biểu </p>
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-user-o"></i>Thang Vỹ Nam</a></li>
-									<li><a href="#"><i class="fa fa-user-o"></i>Nguyễn Tấn Phát</a></li>
+									<li><a href="https://www.facebook.com/thang.nam.1865"><i class="fa fa-user-o"></i>Thang Vỹ Nam</a></li>
+									<li><a href="https://www.facebook.com/nguyentanphat13495"><i class="fa fa-user-o"></i>Nguyễn Tấn Phát</a></li>
 									
 								</ul>
 							</div>
@@ -369,7 +369,7 @@
 								</ul>
 								<span class="copyright">
 									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-									Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+									Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 								</span>
 							</div>
@@ -400,6 +400,7 @@
 				name=name.replace("%20"," ")
 			} while (temp!=name);
 			json =nameProduct(name,Danh_sach_Mat_hang)
+			$(".nameProduct").html(JSON.parse(json).Ten)
 			$(".product-price").html(JSON.parse(json).Don_gia_Ban)
 			$(".product-ram").html(JSON.parse(json).RAM)
 			$(".product-battery").html(JSON.parse(json).PIN)
