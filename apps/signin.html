@@ -79,29 +79,49 @@
             float: left;
             margin-left: 2em;
         }
-        #top-header{
+        #top-heade,#manager-header{
             padding-bottom: 20px;
             display: none
+        }
+        .username{
+            font-size: 2em
+        }
+        #signin{
+            margin-bottom: 10em;
+            margin-top: 10em;
+            margin-left: 5em;
+            margin-right: 5em;
         }
         </style>
     </head>
     <body>
         <header>
             <!-- TOP HEADER -->
-            <div id="top-header">
-                <div class="container">
-                    <ul class="header-links pull-right">
-                        <li><a id="username" href="#"><i class="fa fa-user-o"></i> Login</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-8 topNav hidden-sm hidden-xs">
-                        <div class="row">
-                            <ul class="topMenu">
-                                <li class="active"><a href="./phieuban.html">Bán hàng</a></li>
-                                <li><a href="/order/manage/index">Đơn hàng </a></li>
-                            </ul>
-                        </div>
-                    </div> 
+            <div id="top-heade">
+                
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="./phieuban.html">Tạo phiếu</a></li>
+                        <li><a href="./danhsachphieuban.html">Đơn hàng </a></li>
+                      </ul>
+                        <ul class="header-links pull-right">
+                            <li><a class="username" href="#" style="color: red;"><i class="fa fa-user-o"></i> Login</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div id="manager-header" >
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="./chinhsua.html">Chỉnh sửa sản phẩm </a></li>
+                      </ul>
+                        <ul class="header-links pull-right">
+                            <li><a class="username" href="#" style="color: red;"><i class="fa fa-user-o"></i> Login</a></li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
             
             <!-- /TOP HEADER -->       
@@ -117,7 +137,7 @@
                         </div>
                         <input name="username" type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
                         </br>
-                        <input name="password" type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
+                        <input name="password" type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
                         </br>
                         <div class="wrapper">
                             <span class="group-btn">     
@@ -145,9 +165,12 @@
                 if(typeof json.username !== 'undefined'){
                     var elem = document.getElementById('signin');
                     elem.parentNode.removeChild(elem);
-                    $("#username").html(json.username);
-                    //$("#content").load("nvbh.html")
-                    $("#top-header").css("display", "inherit");
+                    if(json.role === "NVQL"){
+                        $("#manager-header").css("display", "inherit");
+                    }else{ // NVBH
+                        $("#top-heade").css("display", "inherit");
+                    }
+                    $(".username").html(json.username);
                     setNameIsLogin(json.username)
                 }else{
                     $("#signupalert").css("display", "inherit");

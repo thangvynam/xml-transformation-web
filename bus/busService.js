@@ -10,7 +10,9 @@ app.createServer((req, res) => {
     
     switch(req.method) {
         case 'GET':
+            res.setHeader("Access-Control-Allow-Origin", '*')
             switch(req.url){
+                
                 case '/':
                     BUS.postUserName("admin","123") // này dùng phương thức POST lần đầu gửi user,pass . lần sau gửi tokenkey 
                     session.push(BUS.getCaches())
@@ -20,15 +22,17 @@ app.createServer((req, res) => {
                     break
 
                 case '/DanhSachDienThoai':
-                    BUS.postDanhSachDienThoai()
+                    
+                    res.end(BUS.postDanhSachDienThoai())
                     break
                 case '/Check':
-                    res.setHeader("Access-Control-Allow-Origin", '*')
+                    
                     res.end(BUS.getCaches())
                     break
+                
                 default:
                     res.writeHeader(404, {'Content-Type': 'text/plain'})
-                    res.end("Request was not support!!!")
+                    res.end("Request was not support!!! abcd")
                     break
             }
             res.end("..")
@@ -62,13 +66,18 @@ app.createServer((req, res) => {
                                 result=BUS.getCaches()
                                 break;
                             case '/phieuban':
-                                
-                               
                                 BUS.postPhieuBan(resultString)
-                                console.log(resultString)
+                                
+                                break
+                            case '/danhsachphieuban':
+                                result=BUS.getDanhSachPhieuBan(resultString)
+                                break
+                            case '/chinhsua':
+                               
+                                result= BUS.postChinhSua(resultString)
                                 break
                             }
-                            console.log(result)
+                            
                             res.end(result)
                     })
         }

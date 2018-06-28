@@ -1,3 +1,2 @@
-<Dien_thoai NCC="LG" Ten="LG Q8" Ma_So="lgq8" Don_gia_Ban="9045000" RAM="4GB" PIN="3000 mAh" Bo_Nho_Trong="32GB"
-            Chi_tiet="LG Q8 thực tế là một thiết bị khá cao cấp. Nó có thân bằng kim loại đáp ứng tiêu chuẩn chống bụi nước IP67, hỗ trợ Quad DAC và sử dụng chipset Snapdragon 820. Dù không phải là Snapdragon 821 như LG G6 nhưng nó tốt hơn nhiều so với Snapdragon 435 của LG Q6.">
-</Dien_thoai>
+<?xml version="1.0"?>
+<Dien_thoai NCC="LG" Ten="LG Q8" Ma_So="lgq8" Don_gia_Ban="9045000" RAM="4GB" PIN="3000 mAh" Bo_Nho_Trong="32GB" Chi_tiet="LG Q8 thực tế là một thiết bị khá cao cấp. Nó có thân bằng kim loại đáp ứng tiêu chuẩn chống bụi nước IP67, hỗ trợ Quad DAC và sử dụng chipset Snapdragon 820. Dù không phải là Snapdragon 821 như LG G6 nhưng nó tốt hơn nhiều so với Snapdragon 435 của LG Q6." Tinh_trang="true"></Dien_thoai>

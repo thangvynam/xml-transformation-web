@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Document</title>
+		<title class="nameProduct">Document</title>
         <!-- Font-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  		<!-- Google font -->
@@ -27,13 +27,7 @@
 
  		<!-- Custom stlylesheet -->
  		<link type="text/css" rel="stylesheet" href="./css/style.css"/>
-
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+		
 
     </head>
 	<body>
@@ -59,7 +53,7 @@
 								<div class="col-md-3">
 									<div class="header-logo">
 										<a href="#" class="logo">
-											
+											<img src="./img/logo.png" width="90%" alt="">
 										</a>
 									</div>
 								</div>
@@ -74,8 +68,8 @@
 												<option value="1">Category 01</option>
 												<option value="1">Category 02</option>
 											</select>
-											<input class="input" placeholder="Search here">
-											<input class="search-btn" type="submit"  value="Search"> 
+											<input id="myInput" type="text" name="myPhone" class="input" placeholder="Search here">
+											<input class="search-btn" type="submit"  value="Search">
 										</form>
 									</div>
 								</div>
@@ -132,7 +126,7 @@
                 <div id="responsive-nav">
                     <!-- NAV -->
                     <ul class="main-nav nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
+                        <li class="active"><a href="./index.html">Home</a></li>
                         <li><a href="./#samsung">SAMSUNG</a></li>
                         <li><a href="./#lg">LG</a></li>
                         <li><a href="./#htc">HTC</a></li>
@@ -159,7 +153,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="breadcrumb-tree">
-							<li><a href="#">Home</a></li>
+							<li><a href="./index.html">Home</a></li>
 							<li class="active nameProduct"></li>
 						</ul>
 					</div>
@@ -211,7 +205,7 @@
 							</div>
 							<div>
 								<h2 class="product-price"></h2>
-								<span class="product-available">Còn hàng</span>
+								<span class="product-available"></span>
 							</div>
 							<p class="product-detail"></p>
 							<h3>Thông số kỹ thuật</h3>
@@ -250,7 +244,7 @@
 						<div id="product-tab">
 							<!-- product tab nav -->
 							<ul class="tab-nav">
-								<li class="active "><a class="nameProduct" style="font-size:2em" data-toggle="tab" href="#tab1"></a></li>
+								<li class="active "><a class="nameProduct" style="font-size:2em" data-toggle="tab" href="#tab1">Chi tiết sản phẩm</a></li>
 							</ul>
 							<!-- /product tab nav -->
 
@@ -316,8 +310,8 @@
 								<h3 class="footer-title">About Us</h3>
 								<p>PN là nhóm lập trình viên về các mảng : mobile , web .Gồm các thành viên tiêu biểu </p>
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-user-o"></i>Thang Vỹ Nam</a></li>
-									<li><a href="#"><i class="fa fa-user-o"></i>Nguyễn Tấn Phát</a></li>
+									<li><a href="https://www.facebook.com/thang.nam.1865"><i class="fa fa-user-o"></i>Thang Vỹ Nam</a></li>
+									<li><a href="https://www.facebook.com/nguyentanphat13495"><i class="fa fa-user-o"></i>Nguyễn Tấn Phát</a></li>
 									
 								</ul>
 							</div>
@@ -369,7 +363,7 @@
 								</ul>
 								<span class="copyright">
 									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-									Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+									Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 								</span>
 							</div>
@@ -391,26 +385,57 @@
 		<script>	
 		document.body.onload =() => {
 			url =window.location.href
+			console.log(url)
 			var Danh_sach_Mat_hang =Doc_Danh_sach_Mat_hang()
-			var file_extension = url.lastIndexOf('/');
-			var name=url.substr(file_extension)
-			name=name.substring(1,name.length)
-			do {
-				temp = name
-				name=name.replace("%20"," ")
-			} while (temp!=name);
+			if(url.includes("myPhone")){
+				var file_extension = url.lastIndexOf('=')
+				var name=url.substr(file_extension+1,url.length)
+				do {
+					temp = name
+					name=name.replace("+"," ")
+				} while (temp!=name)
+				
+				do {
+					temp = name
+					name=name.replace("%2B","")
+				} while (temp!=name)
+				if(name.includes("%28") && name.includes("%29")  ){
+					name=name.replace("%28","(")
+					name=name.replace("%29",")")
+				}
+				console.log(name)
+
+			}else{
+				var file_extension = url.lastIndexOf('/');
+				var name=url.substr(file_extension)
+				name=name.substring(1,name.length)
+				do {
+					temp = name
+					name=name.replace("%20"," ")
+				} while (temp!=name);
+				
+			}
 			json =nameProduct(name,Danh_sach_Mat_hang)
+			$(".nameProduct").html(JSON.parse(json).Ten)
 			$(".product-price").html(JSON.parse(json).Don_gia_Ban)
 			$(".product-ram").html(JSON.parse(json).RAM)
 			$(".product-battery").html(JSON.parse(json).PIN)
 			$(".product-storage").html(JSON.parse(json).Bo_Nho_Trong)
 			$(".product-detail").html(JSON.parse(json).Chi_tiet)
+			if(JSON.parse(json).Tinh_trang === "true"){
+				$(".product-available").html("Còn hàng")
+			}else{
+				$(".product-available").html("Hết hàng")
+			}
+			
 			var temp = document.createElement("img")
 			var Dia_chi_Media = "./img"
 			temp.src =  `${Dia_chi_Media}/${JSON.parse(json).Ma_so}.jpg`
 			temp.alt=""
 			productImage.innerHTML=temp.outerHTML
 			relatedProduct.innerHTML = Tao_Chuoi_HTML_Danh_sach_Mat_hang_lien_quan(Danh_sach_Mat_hang,JSON.parse(json).NCC,JSON.parse(json).Ten)
+			
+			
 		}
 
 			

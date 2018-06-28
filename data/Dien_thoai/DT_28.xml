@@ -1,3 +1,2 @@
-<Dien_thoai NCC="HTC" Ten="HTC U Ultra" Ma_So="htcuultra" Don_gia_Ban="8257000" RAM="4GB" PIN="3000 mAh" Bo_Nho_Trong="64/128GB"
-            Chi_tiet="HTC U Ultra đánh dấu sự trở lại của HTC với triết lý thiết kế mới, đẹp hơn - sang trọng - bóng bẩy hơn và đặc biệt gắn bó với người dùng hơn thông qua trợ lý ảo HTC Sense Companion.">
-</Dien_thoai>
+<?xml version="1.0"?>
+<Dien_thoai NCC="HTC" Ten="HTC U Ultra" Ma_So="htcuultra" Don_gia_Ban="8257000" RAM="4GB" PIN="3000 mAh" Bo_Nho_Trong="64/128GB" Chi_tiet="HTC U Ultra đánh dấu sự trở lại của HTC với triết lý thiết kế mới, đẹp hơn - sang trọng - bóng bẩy hơn và đặc biệt gắn bó với người dùng hơn thông qua trợ lý ảo HTC Sense Companion." Tinh_trang="true"></Dien_thoai>

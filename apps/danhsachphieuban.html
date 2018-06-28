@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+     <!-- Font -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <!-- Google font -->
+     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+     <!-- Bootstrap -->
+     <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css"/>
+
+     <!-- Slick -->
+     <link type="text/css" rel="stylesheet" href="./css/slick.css"/>
+     <link type="text/css" rel="stylesheet" href="./css/slick-theme.css"/>
+
+     <!-- nouislider -->
+     <link type="text/css" rel="stylesheet" href="./css/nouislider.min.css"/>
+
+     <!-- Font Awesome Icon -->
+     <link rel="stylesheet" href="./css/font-awesome.min.css">
+
+     <!-- Custom stlylesheet -->
+     <link type="text/css" rel="stylesheet" href="./css/style.css"/>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+     <!-- jQuery library -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+     <!-- Latest compiled JavaScript -->
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+    <title>PN DEV</title>
+    <style>
+        
+        ul li{
+            float: left;
+            margin-left: 2em;
+            
+        }
+        
+        #top-heade{
+            padding-bottom: 20px;
+            
+        }
+        #abc{
+            margin-top: 5em
+        }
+        h1{
+            font-family: "My Custom Font", Verdana, Tahoma;
+        }
+        #manager-header{
+            padding-bottom: 20px;
+        }
+        #username{
+            font-size: 2em
+        }
+    
+        
+    </style>
+</head>
+<body >
+        <div id="signupalert" style="display:none" class="alert alert-danger">
+            <a href="./signin.html">
+                <center>You must sign in</center>
+            </a>    
+        </div>
+        <header>
+            <!-- TOP HEADER -->
+            <div id="top-heade">
+                
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="./phieuban.html">Tạo phiếu</a></li>
+                        
+                      </ul>
+                        <ul class="header-links pull-right">
+                            <li><a id="username" href="#" style="color: red;"><i class="fa fa-user-o"></i> Login</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            
+            
+            <!-- /TOP HEADER -->       
+        </header>
+        <center id="danhsach"><h1 >DANH SÁCH ĐƠN HÀNG </h1></center>
+        
+        <table id="abc" class="table table-bordered">
+            
+        </table>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="./js/myscript.js"></script>
+
+        <script>
+            
+            $(function(){
+                var Dia_chi_Dich_vu="http://localhost:3001/Check" // gửi qua DAL xử lý 
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", Dia_chi_Dich_vu, false);
+                xhttp.send();
+                json = JSON.parse(xhttp.responseText);
+                if(typeof json.isLogin === 'undefined'){
+                    $(".lon").css("display", "none");
+                    $("#top-heade").css("display", "none");
+                    $("#danhsach").css("display", "none");
+                    $("#signupalert").css("display", "inherit");
+                }else{
+                    
+                    tenNV=json.username
+                    $("#username").html(tenNV);
+                    var Dia_chi_Dich_vu="http://localhost:3001/danhsachphieuban" // gửi qua DAL xử lý 
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", Dia_chi_Dich_vu, false);
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhttp.send(tenNV);
+                    jsondata =JSON.parse(xhttp.responseText)
+
+                    var T_FINAL = document.createElement("div")
+
+                    var T_HEAD =document.createElement("thead")
+                    var T_R =document.createElement("tr")
+                    var T_H1 = document.createElement("th")
+                    T_H1.innerHTML = "Ngày"
+                    var T_H2 = document.createElement("th")
+                    T_H2.innerHTML = "Khách hàng"
+                    var T_H3 = document.createElement("th")
+                    var element_T_H3= document.createElement("center")
+                    element_T_H3.innerHTML = "Sản phẩm"
+                    T_H3.appendChild(element_T_H3)
+                    T_R.appendChild(T_H1)
+                    T_R.appendChild(T_H2)
+                    T_R.appendChild(T_H3)
+                    T_HEAD.appendChild(T_R)
+
+                    T_FINAL.appendChild(T_HEAD)
+
+                    var Th_Danh_sach = document.createElement("tbody")
+                    
+                    for(let i=0;i<jsondata.table.length;i++){
+
+                        var Th_Thong_tin = document.createElement("tr")
+
+                        var NGAY_TAG =document.createElement("td")
+                        NGAY_TAG.innerHTML = `${jsondata.table[i].ngay}`
+                        
+                        var KHACH_TAG =document.createElement("td")
+                        KHACH_TAG.innerHTML =`${jsondata.table[i].tenKhach}`
+
+                        var SANPHAM_TAG = document.createElement("td")
+                        var SO_LUONG = document.createElement("center")
+                        SO_LUONG.innerHTML = `Số lượng: ${jsondata.table[i].soluong}`
+                        var TEN_DT = document.createElement("center")
+                        TEN_DT.innerHTML = `Tên sản phẩm : ${jsondata.table[i].tenDT}`
+                        var TIEN = document.createElement("center")
+                        TIEN.innerHTML = `Tổng tiền : ${jsondata.table[i].tien}`
+                        SANPHAM_TAG.appendChild(SO_LUONG)
+                        SANPHAM_TAG.appendChild(TEN_DT)
+                        SANPHAM_TAG.appendChild(TIEN)
+
+                        Th_Thong_tin.appendChild(NGAY_TAG)
+                        Th_Thong_tin.appendChild(KHACH_TAG)
+                        Th_Thong_tin.appendChild(SANPHAM_TAG)
+
+                        Th_Danh_sach.appendChild(Th_Thong_tin)
+                    }
+                    
+                    T_FINAL.appendChild(Th_Danh_sach)
+                    var Chuoi_HTML = T_FINAL.outerHTML
+                    abc.innerHTML = Chuoi_HTML
+                   
+                }
+            })
+        </script>
+</body>
+</html>

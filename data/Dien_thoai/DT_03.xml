@@ -1,4 +1,2 @@
-<Dien_thoai NCC="Samsung" Ten="Samsung Galaxy Note8" Ma_So="note8" Don_gia_Ban="19978000" RAM="6GB" PIN="3300 mAh" Bo_Nho_Trong="64/128/256/400GB"
-            Chi_tiet="Galaxy Note 8 là niềm hy vọng vực lại dòng Note danh tiếng của Samsung với diện mạo nam tính, sang trọng. Trang bị camera kép xóa phông thời thượng, 
-            màn hình vô cực như S8 Plus, bút Spen cùng nhiều tính năng mới và nhiều công nghệ ưu ái khác.">
-</Dien_thoai>
+<?xml version="1.0"?>
+<Dien_thoai NCC="Samsung" Ten="Samsung Galaxy Note8" Ma_So="note8" Don_gia_Ban="19978000" RAM="6GB" PIN="3300 mAh" Bo_Nho_Trong="64/128/256/400GB" Chi_tiet="Galaxy Note 8 là niềm hy vọng vực lại dòng Note danh tiếng của Samsung với diện mạo nam tính, sang trọng. Trang bị camera kép xóa phông thời thượng, &#xD;&#xA;            màn hình vô cực như S8 Plus, bút Spen cùng nhiều tính năng mới và nhiều công nghệ ưu ái khác." Tinh_trang="true"></Dien_thoai>
