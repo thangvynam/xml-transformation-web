@@ -1,3 +1,2 @@
-<Dien_thoai NCC="Nokia" Ten="Nokia 7 Plus" Ma_So="nokia7plus" Don_gia_Ban="10654000" RAM="4GB" PIN="3800 mAh" Bo_Nho_Trong="64/256GB"
-            Chi_tiet="Nokia 7 Plus là chiếc smartphone đầu tiên đánh dấu bước đi đầu tiên của HMD vào thế giới màn hình tỉ lệ 18:9.">
-</Dien_thoai> 
+<?xml version="1.0"?>
+<Dien_thoai NCC="Nokia" Ten="Nokia 7 Plus" Ma_So="nokia7plus" Don_gia_Ban="10654000" RAM="4GB" PIN="3800 mAh" Bo_Nho_Trong="64/256GB" Chi_tiet="Nokia 7 Plus là chiếc smartphone đầu tiên đánh dấu bước đi đầu tiên của HMD vào thế giới màn hình tỉ lệ 18:9." Tinh_trang="true"></Dien_thoai>

@@ -153,6 +153,10 @@
                     <button class="btn btn-info" onclick="Nhap_Hang()" style="width:100px; height:30px; margin-top:20px;">Nhập </button>
                     <button class="btn btn-info" onclick="Lam_Moi()" style="width:100px; height:30px; margin-top:20px; margin-left:20px;">Làm mới</button>
                 </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -163,6 +167,7 @@
         <script>
             
             $(function(){
+
                 var Dia_chi_Dich_vu="http://localhost:3001/Check" // gửi qua DAL xử lý 
                 var xhttp = new XMLHttpRequest();
                 xhttp.open("GET", Dia_chi_Dich_vu, false);
@@ -208,12 +213,22 @@
                 var ngay=$("#datepicker").val()
                 
                 var tien =$("#tien").text()
-                var Dia_chi_Dich_vu="http://localhost:3001/phieuban" // gửi qua DAL xử lý 
-                var xhttp = new XMLHttpRequest();
-                xhttp.open("POST", Dia_chi_Dich_vu, false);
-                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send(tenNV+"&"+tenKhach+"&"+soluong+"&"+ngay+"&"+selectedValue+"&"+tien);
-                alert("Đã thêm thành công ")
+                if(tenKhach === "" || soluong=== ""||ngay ===""  || tien ===""){
+                    alert("Vui lòng điền đủ thông tin phiếu")
+                }else{
+                    var Dia_chi_Dich_vu="http://localhost:3001/phieuban" // gửi qua DAL xử lý 
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", Dia_chi_Dich_vu, false);
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhttp.send(tenNV+"&"+tenKhach+"&"+soluong+"&"+ngay+"&"+selectedValue+"&"+tien);
+                    alert("Đã thêm thành công ")
+                    $("#hoten").val("")
+                    $("#soluong").val("")
+                    $("#datepicker").val("")
+                    $("#tien").text("")
+                }
+            }
+            function Lam_Moi(){
                 $("#hoten").val("")
                 $("#soluong").val("")
                 $("#datepicker").val("")

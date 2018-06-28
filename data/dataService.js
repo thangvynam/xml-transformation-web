@@ -165,7 +165,8 @@ app.createServer((req, res) => {
                     }).on('end', () => {
                         var tenDT = resultString.split("&")[0]
                         var giaMoi = resultString.split("&")[1]
-                        getMethod.chinhsua_DienThoai(tenDT,giaMoi)
+                        var tinhTrang = resultString.split("&")[2]
+                        getMethod.chinhsua_DienThoai(tenDT,giaMoi,tinhTrang)
                         res.end("true")
                         
                     })

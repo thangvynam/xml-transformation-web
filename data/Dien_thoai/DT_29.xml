@@ -1,3 +1,2 @@
-<Dien_thoai NCC="HTC" Ten="HTC Desire 12+" Ma_So="htcdesire12plus" Don_gia_Ban="6653000" RAM="3GB" PIN="2965 mAh" Bo_Nho_Trong="32GB"
-            Chi_tiet="HTC Desire 12+ là phiên bản lớn hơn của chiếc HTC Desire 12 với cải tiến về màn hình cũng như camera kép chất lượng.">
-</Dien_thoai>
+<?xml version="1.0"?>
+<Dien_thoai NCC="HTC" Ten="HTC Desire 12+" Ma_So="htcdesire12plus" Don_gia_Ban="6653000" RAM="3GB" PIN="2965 mAh" Bo_Nho_Trong="32GB" Chi_tiet="HTC Desire 12+ là phiên bản lớn hơn của chiếc HTC Desire 12 với cải tiến về màn hình cũng như camera kép chất lượng." Tinh_trang="true"></Dien_thoai>

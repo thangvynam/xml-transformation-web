@@ -73,8 +73,8 @@ app.createServer((req, res) => {
                                 result=BUS.getDanhSachPhieuBan(resultString)
                                 break
                             case '/chinhsua':
+                               
                                 result= BUS.postChinhSua(resultString)
-                                console.log(result)
                                 break
                             }
                             

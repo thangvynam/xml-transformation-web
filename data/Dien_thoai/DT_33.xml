@@ -1,3 +1,2 @@
-<Dien_thoai NCC="Huawei" Ten="Huawei P20 Pro" Ma_So="huaweip20pro" Don_gia_Ban="23947000" RAM="6GB" PIN="4000 mAh" Bo_Nho_Trong="128GB"
-            Chi_tiet="Đặc điểm nổi bật của Huawei P20 Pro là thiết kế tai thỏ thời thượng, cấu hình khủng và đặc biệt nhất là bộ 3 camera có thể đạt tới 40 MP, hỗ trợ zoom 5x.">
-</Dien_thoai>
+<?xml version="1.0"?>
+<Dien_thoai NCC="Huawei" Ten="Huawei P20 Pro" Ma_So="huaweip20pro" Don_gia_Ban="23947000" RAM="6GB" PIN="4000 mAh" Bo_Nho_Trong="128GB" Chi_tiet="Đặc điểm nổi bật của Huawei P20 Pro là thiết kế tai thỏ thời thượng, cấu hình khủng và đặc biệt nhất là bộ 3 camera có thể đạt tới 40 MP, hỗ trợ zoom 5x." Tinh_trang="true"></Dien_thoai>

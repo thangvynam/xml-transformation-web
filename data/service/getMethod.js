@@ -28,7 +28,7 @@ var get_DienThoai= ()=>{
     var xml = builder.buildObject(danhSach_DienThoai)
     return xml
 }
-var chinhsua_DienThoai=(tenDT,giaMoi)=>{
+var chinhsua_DienThoai=(tenDT,giaMoi,tinhTrang)=>{
 
     fs.readdirSync(path + '/Dien_thoai/').forEach(file => {
         var filePath = path + '/Dien_thoai/' + file
@@ -40,9 +40,12 @@ var chinhsua_DienThoai=(tenDT,giaMoi)=>{
                 var dt = new DienThoai(
                     result.Dien_thoai.$.NCC,result.Dien_thoai.$.Ten,result.Dien_thoai.$.Ma_So,
                     result.Dien_thoai.$.Don_gia_Ban,result.Dien_thoai.$.NOI_BAT,result.Dien_thoai.$.RAM,
-                    result.Dien_thoai.$.PIN,result.Dien_thoai.$.Bo_Nho_Trong,result.Dien_thoai.$.Chi_tiet
+                    result.Dien_thoai.$.PIN,result.Dien_thoai.$.Bo_Nho_Trong,result.Dien_thoai.$.Chi_tiet,
+                    result.Dien_thoai.$.Tinh_trang
                 )
                 dt.setDonGiaBan(giaMoi)
+                dt.setTinh_trang(tinhTrang)
+                console.log(dt.getTinh_trang())
                 xw = new XMLWriter;
                 xw.startDocument();
                 xw.startElement('Dien_thoai');
@@ -55,6 +58,7 @@ var chinhsua_DienThoai=(tenDT,giaMoi)=>{
                 xw.writeAttribute('PIN', dt.getPIN());
                 xw.writeAttribute('Bo_Nho_Trong', dt.getBo_Nho_Trong());
                 xw.writeAttribute('Chi_tiet', dt.getChi_tiet());
+                xw.writeAttribute('Tinh_trang', dt.getTinh_trang());
                 xw.endDocument();
                 console.log(xw.toString());
                 fs.writeFile(filePath, xw.toString(), 'utf8'); // write it back 

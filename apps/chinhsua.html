@@ -33,6 +33,9 @@
             float: left;
             width: 50%;
         }
+        img{
+            cursor:pointer
+        }
         
     </style>
 </head>
@@ -51,21 +54,33 @@
                                 <option selected disabled hidden>Choose here</option>
                             </select>
                     </div>
+                   
                     <div class="form-group">
                             <label class="control-label col-sm-2">Giá cũ:</label>
-                            <div class="col-sm-3">          
+                            <div class="col-sm-4">          
                                 <input  class="form-control" id="giaCu" value="" readonly >
                             </div>
                         </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2">Giá sửa:</label>
-                        <div class="col-sm-3">          
-                            <input  class="form-control" id="tien" placeholder="Nhập giá mới" >
+                        <div class="col-sm-4">          
+                            <input  type="number" class="form-control" id="tien" placeholder="Nhập giá mới" >
                         </div>
                     </div>
+                    <div class="form-group">
+                            <label class="control-label col-sm-2">Tình trạng</label>
+                            <div class="col-sm-4">          
+                                <input  class="form-control" id="tinhTrang" value="" readonly >
+                            </div>
+                            <div class="col-sm-4">          
+                                <img id="exchange"src="./img/exchange.png" alt="exchange" />
+                            </div>
+
+                    </div>
+                    
+
             </div>
             <div id="image">
-                <!-- <img src="./img/oppo.png" width="460" height="345" alt="hình" > -->
             </div>
             
         </form>
@@ -74,7 +89,7 @@
     <script src="./js/myscript.js"></script>
     <script>
         $(function(){
-            var Dia_chi_Dich_vu="http://localhost:3001/Check" // gửi qua DAL xử lý 
+                var Dia_chi_Dich_vu="http://localhost:3001/Check" // gửi qua DAL xử lý 
                 var xhttp = new XMLHttpRequest();
                 xhttp.open("GET", Dia_chi_Dich_vu, false);
                 xhttp.send();
@@ -97,17 +112,40 @@
                         var tenDT =$(this).val()
                         image.innerHTML=Tra_Ma_So(Danh_sach_Mat_hang,tenDT,obj)
                         giaCu.value = obj.value
+                        tinh_trang =Tinh_trang_san_pham(Danh_sach_Mat_hang,tenDT)
+                        if(tinh_trang === "true"){
+                            tinhTrang.value = "Còn hàng"
+                        }else{
+                            tinhTrang.value = "Hết hàng"
+                        }
                         
                     });
+                    $("#exchange").click(function(){
+                        if(tinhTrang.value === "Hết hàng"){
+                            tinhTrang.value = "Còn hàng"
+                        }else{
+                            tinhTrang.value = "Hết hàng"
+                        }
+                    })
                     $("#button").click(function(){
                         var tenDT =select.options[select.selectedIndex].text
                         var tien = $("#tien").val()
-                        var Dia_chi_Dich_vu="http://localhost:3001/chinhsua" // gửi qua DAL xử lý 
-                        var xhttp = new XMLHttpRequest();
-                        xhttp.open("POST", Dia_chi_Dich_vu, false);
-                        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                        xhttp.send(tenDT+"&"+tien);
-                        alert("Đã chỉnh sửa thành công ")
+                        if(tinhTrang.value === "Hết hàng"){
+                            tinhTrang = "false"
+                        }else{
+                            tinhTrang = "true"
+                        }
+                        if(tenDT != "Choose here" && tien!=""){
+                            var Dia_chi_Dich_vu="http://localhost:3001/chinhsua" // gửi qua DAL xử lý 
+                            var xhttp = new XMLHttpRequest();
+                            xhttp.open("POST", Dia_chi_Dich_vu, false);
+                            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                            xhttp.send(tenDT+"&"+tien+"&"+tinhTrang);
+                            alert("Đã chỉnh sửa thành công ")
+                        }else{
+                            alert("Vui lòng kiểm tra lại thông tin")
+                        }
+                        
             })
                 }
             })

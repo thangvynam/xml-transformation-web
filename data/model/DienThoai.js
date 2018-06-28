@@ -1,7 +1,7 @@
 "use strict"
 
 module.exports = class DienThoai {
-    constructor(NCC, Ten,Ma_So,Don_gia_Ban,NOI_BAT,RAM,PIN,Bo_Nho_Trong,Chi_tiet) {
+    constructor(NCC, Ten,Ma_So,Don_gia_Ban,NOI_BAT,RAM,PIN,Bo_Nho_Trong,Chi_tiet,Tinh_trang) {
         this.NCC = NCC;
         this.Ten = Ten;
         this.Ma_So = Ma_So;
@@ -11,6 +11,7 @@ module.exports = class DienThoai {
         this.PIN = PIN;
         this.Bo_Nho_Trong = Bo_Nho_Trong;
         this.Chi_tiet = Chi_tiet;
+        this.Tinh_trang=Tinh_trang
     }
     getNCC(){
         return this.NCC;
@@ -39,7 +40,13 @@ module.exports = class DienThoai {
     getChi_tiet(){
         return this.Chi_tiet;
     }
+    getTinh_trang(){
+        return this.Tinh_trang;
+    }
     setDonGiaBan(Don_gia_Ban) {
         this.Don_gia_Ban = Don_gia_Ban;
+    }
+    setTinh_trang(Tinh_trang) {
+        this.Tinh_trang = Tinh_trang;
     }
 }

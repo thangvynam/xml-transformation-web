@@ -1,3 +1,2 @@
-<Dien_thoai NCC="Apple" Ten="Apple iPhone 8 Plus" Ma_So="ip8plus" Don_gia_Ban="22647000" RAM="3GB" PIN="2691 mAh" Bo_Nho_Trong="64/256GB"
-            Chi_tiet="iPhone 8 Plus là bản nâng cấp nhẹ của iPhone 7 Plus đã ra mắt trước đó với cấu hình mạnh mẽ cùng camera có nhiều cải tiến cũng như màu sắc nổi bật cá tính.">
-</Dien_thoai>
+<?xml version="1.0"?>
+<Dien_thoai NCC="Apple" Ten="Apple iPhone 8 Plus" Ma_So="ip8plus" Don_gia_Ban="22647000" RAM="3GB" PIN="2691 mAh" Bo_Nho_Trong="64/256GB" Chi_tiet="iPhone 8 Plus là bản nâng cấp nhẹ của iPhone 7 Plus đã ra mắt trước đó với cấu hình mạnh mẽ cùng camera có nhiều cải tiến cũng như màu sắc nổi bật cá tính." Tinh_trang="true"></Dien_thoai>

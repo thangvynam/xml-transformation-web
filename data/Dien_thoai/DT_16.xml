@@ -1,3 +1,2 @@
-<Dien_thoai NCC="Sony" Ten="Sony Xperia XZ2" Ma_So="xperiaxz2" Don_gia_Ban="21271000" NOI_BAT="true" RAM="4/6GB" PIN="3180 mAh" Bo_Nho_Trong="64GB"
-            Chi_tiet="Xperia XZ2 đánh dấu sự thay đổi trong ngôn ngữ thiết kế mới của Sony. Máy được nâng cấp cấu hình và camera, hỗ trợ quay video 4K HDR và slow motion 960 fps.">
-</Dien_thoai>
+<?xml version="1.0"?>
+<Dien_thoai NCC="Sony" Ten="Sony Xperia XZ2" Ma_So="xperiaxz2" Don_gia_Ban="21271000" NOI_BAT="true" RAM="4/6GB" PIN="3180 mAh" Bo_Nho_Trong="64GB" Chi_tiet="Xperia XZ2 đánh dấu sự thay đổi trong ngôn ngữ thiết kế mới của Sony. Máy được nâng cấp cấu hình và camera, hỗ trợ quay video 4K HDR và slow motion 960 fps." Tinh_trang="true"></Dien_thoai>
